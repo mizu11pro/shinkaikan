@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Shinnkaikan</title>
+    <title>Shinkaikan</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <% if admin_signed_in? %>
+      <li>
+        <%= link_to "logout", destroy_admin_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "log_in", new_admin_session_path %>
+      </li>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
