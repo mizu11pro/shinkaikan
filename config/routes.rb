@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  # devise_for :movies
   scope module: :users do
     root 'users#show'
     get 'homes' => 'homes#top', as: :report
     resources :homes, only: [:create,:edit,:update,:destroy]
     resources :users, only: [:index, :edit, :update]
     resources :movies
+    resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
   end
 
   devise_for :users, controllers: {

@@ -17,10 +17,13 @@
             <!--admin側のheaderを作成-->
             <%= link_to "Top", report_path %>
             <%= link_to "Movie", movies_path %>
+            <%= link_to "Genre", genres_path %>
+            <%= link_to "User", users_path %>
           </li>
         <% else %>
           <li>
             <!--customer側のlogin時のheaderを作成-->
+            <%= link_to "Movie", movies_path %>
           </li>
         <% end %>
         <li>
