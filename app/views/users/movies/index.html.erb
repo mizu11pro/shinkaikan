@@ -1,0 +1,19 @@
+<div class="report">
+  <h1>お知らせ</h1>
+  <% @reports.each do |report| %>
+    <%= attachment_image_tag report, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
+    <%= report.title %>
+    <%= report.body %>
+  <% end %>
+</div>
+
+<%= link_to "新規映画作成", new_movie_path %>
+
+<div class="movie">
+  <% @movies.each do |movie| %>
+    <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
+    <%= movie.title %>
+    <%= movie.body %>
+    <%= link_to "削除", movie_path(movie), method: :delete %>
+  <% end %>
+</div>

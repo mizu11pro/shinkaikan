@@ -1,6 +1,0 @@
-<h3>お知らせ一案</h3>
-<% @report.each do |report| %>
-    <%= attachment_image_tag report, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
-    <%= report.title %>
-    <%= report.body %>
-<% end %>

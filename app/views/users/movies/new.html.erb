@@ -1,0 +1,11 @@
+<div class="new-movie">
+  <%= form_with model: @movie, url: movies_path, local: true do |movie| %>
+    <h3>写真</h3>
+      <%= movie.attachment_field :image %>
+    <h3>作品名</h3>
+      <%= movie.text_area :title %>
+    <h3>内容</h3>
+      <%= movie.text_field :body %>
+      <%= movie.submit "追加" %>
+  <% end %>
+</div>

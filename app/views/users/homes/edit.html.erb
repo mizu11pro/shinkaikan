@@ -1,0 +1,11 @@
+<div class="edit-report">
+    <%= form_with model: @report, url: home_path, local: true do |report| %>
+        <h3>画像</h3>
+        <%= report.attachment_field :image %>
+        <h3>お題</h3>
+        <%= report.text_field :title %>
+        <h3>内容</h3>
+        <%= report.text_area :body %>
+        <%= report.submit '編集完了' %>
+    <% end %>
+</div>

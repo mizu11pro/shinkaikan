@@ -10,14 +10,27 @@
   </head>
 
   <body>
-    <% if admin_signed_in? %>
-      <li>
-        <%= link_to "logout", destroy_admin_session_path, method: :delete %>
-      </li>
+    <% if user_signed_in? %>
+
+        <% if current_user.is_admin? %>
+          <li>
+            <!--admin側のheaderを作成-->
+            <%= link_to "Top", report_path %>
+            <%= link_to "Movie", movies_path %>
+          </li>
+        <% else %>
+          <li>
+            <!--customer側のlogin時のheaderを作成-->
+          </li>
+        <% end %>
+        <li>
+          <%= link_to "logout", destroy_user_session_path, method: :delete %>
+        </li>
     <% else %>
-      <li>
-        <%= link_to "log_in", new_admin_session_path %>
-      </li>
+        <li>
+          <%= link_to "log_in", user_session_path %>
+          <%= link_to "新規登録", new_user_registration_path %>
+        </li>
     <% end %>
 
     <%= yield %>

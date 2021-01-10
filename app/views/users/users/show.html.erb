@@ -1,0 +1,11 @@
+<% if user_signed_in? %>
+    <% if current_user == @user || current_user.is_admin? %>
+      <div class="admin-top">
+        <h1>おはようadmin</h1>
+      </div>
+    <% else %>
+      <div class="customer-top">
+        <h1>こんにちわ。customer</h1>
+      </div>
+    <% end %>
+<% end %>
