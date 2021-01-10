@@ -8,6 +8,7 @@ class DeviseCreateMovies < ActiveRecord::Migration[5.2]
       t.string :body
       t.string :image_id
       t.string :genre_id
+      t.boolean :is_active
 
       t.timestamps
     end

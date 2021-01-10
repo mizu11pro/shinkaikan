@@ -1,0 +1,5 @@
+<div class="movie">
+    <%= attachment_image_tag @movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
+    <%= @movie.title %>
+    <%= @movie.body %>
+</div>
