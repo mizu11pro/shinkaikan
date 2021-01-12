@@ -1,39 +1,29 @@
 Rails.application.routes.draw do
 
-  scope module: :users do
-    root 'users#show'
-    get 'homes' => 'homes#top', as: :report
-    resources :homes, only: [:create,:edit,:update,:destroy]
-    resources :users, only: [:index, :edit, :update]
-    resources :movies
-    resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
-  end
-
   devise_for :users, controllers: {
     sessions:       'users/sessions',
     registrations:  'users/registrations',
     passwords:      'users/passwords',
   }
 
-  # scope module: :admins do
-  #   get 'homes' => 'homes#top'
-  #   resources :homes, only: [:show, :edit, :create, :update, :destroy]
-  #   # resources :reportimages, only: [:new, :create, :index, :show, :destroy]
-  # end
+  # namespace :users do
+  scope module: :users do
+    root 'movies#index'
+    get 'homes' => 'homes#top', as: :report
 
-  # devise_for :admins, controllers: {
-  #   sessions:       'admins/sessions',
-  #   registrations:  'admins/registrations',
-  #   passwords:      'admins/passwords',
-  # }
+    get 'followings' => 'relationships#followings'
+    get 'followers' => 'relationships#followers'
+    resource :relationships, only: [:create, :destroy]
 
-  # scope module: :customers do
-  #   root 'homes#index'
+    resources :homes, except: [:new, :index, :show]
+    resources :users, except: [:new, :create, :destroy]
+    resources :movies
+    resources :genres, except: [:show]
+
+  end
+
+  # resources :users do
+  #   resource :relationships, only: [:create, :destroy]
   # end
-  # devise_for :customers, controllers: {
-  #   sessions:       'customers/sessions',
-  #   registrations:  'customers/registrations',
-  #   passwords:      'customers/passwords',
-  # }
 
 end
