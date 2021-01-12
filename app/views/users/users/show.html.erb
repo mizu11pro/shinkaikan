@@ -9,3 +9,10 @@
       </div>
     <% end %>
 <% end %>
+
+<div class="my-page">
+  	<%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
+		<p>name</p>
+		<%= @user.name %>
+		<%= link_to "変更する", edit_user_path(@user) %>
+</div>
