@@ -1,6 +1,6 @@
 class Users::HomesController < ApplicationController
 
-  def top
+  def index
     @report = Report.new
     @reports = Report.all
   end
@@ -8,7 +8,7 @@ class Users::HomesController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.save
-    redirect_to report_path
+    redirect_to homes_path
   end
 
   def edit
@@ -18,13 +18,13 @@ class Users::HomesController < ApplicationController
   def update
     @report = Report.find(params[:id])
     @report.update(report_params)
-    redirect_to report_path
+    redirect_to homes_path
   end
 
   def destroy
     @report = Report.find(params[:id])
     @report.destroy
-    redirect_to report_path
+    redirect_to homes_path
   end
 
   private

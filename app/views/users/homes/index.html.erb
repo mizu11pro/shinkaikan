@@ -1,4 +1,5 @@
 <div class="new-report">
+    <h3>お知らせ投稿</h3>
     <%= form_with model: @report, url: homes_path, local: true do |report| %>
         <h3>画像</h3>
         <%= report.attachment_field :image %>
@@ -10,6 +11,7 @@
     <% end %>
 </div>
 <div class="report">
+  <h3>お知らせ欄</h3>
   <table class="table">
     <thead>
       <tr>

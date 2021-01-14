@@ -7,23 +7,30 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
     <% if user_signed_in? %>
-
+    <div class="search">
+      <%= form_with url: search_users_path, method: :get, local: true do |search| %>
+        <%= search.text_field :search %>
+        <%= search.submit "検索" %>
+      <% end %>
+    </div>
         <% if current_user.is_admin? %>
           <li>
             <!--admin側のheaderを作成-->
-            <%= link_to "Top", report_path %>
-            <%= link_to "Movie", root_path %>
+            <%= link_to "Top", root_path %>
             <%= link_to "Genre", genres_path %>
+            <%= link_to "Movie",movies_path %>
             <%= link_to "User", users_path %>
           </li>
         <% else %>
           <li>
             <!--customer側のlogin時のheaderを作成-->
-            <%= link_to "movies", root_path %>
+            <%= link_to "Top", root_path %>
+            <%= link_to "movies", movies_path %>
             <%= link_to "Users", users_path %>
             <%= link_to "DM", user_path(current_user) %>
           </li>
@@ -35,6 +42,7 @@
         <li>
           <%= link_to "ログイン", user_session_path %>
           <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post %>
         </li>
     <% end %>
 

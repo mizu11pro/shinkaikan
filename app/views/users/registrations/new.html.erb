@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>新規登録</h2>
 
 <%= form_with model: @user, url: user_registration_path, class: 'new_user', local: true do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
@@ -31,4 +31,4 @@
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<h4>既にご登録いただいている方は<%= link_to "こちら", user_session_path %>からログイン!!</h4>
