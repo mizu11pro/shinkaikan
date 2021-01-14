@@ -1,11 +1,12 @@
 <div class="new-movie">
-  <%= form_with model: @movie, url: movies_path, local: true do |movie| %>
+  <%= form_with model: @movie, url: movies_path, method: :post, local: true do |movie| %>
     <h3>写真</h3>
       <%= movie.attachment_field :image %>
     <h3>作品名</h3>
       <%= movie.text_area :title %>
     <h3>内容</h3>
       <%= movie.text_field :body %>
+      <%= movie.collection_select :genre_id, Genre.all, :id, :name, { include_blank: '--ジャンル選択--'} %>
       <%= movie.radio_button :is_movie, true, :checked => true  %>表示中
       <%= movie.radio_button :is_movie, false %>非表示
       <%= movie.submit "追加" %>

@@ -20,6 +20,7 @@
       <!--この先adminのみ表示にする-->
         <% if current_user == @user || current_user.is_admin? %>
           <%= movie.is_movie ? '表示中' : '非表示' %>
+          <%= movie.genre.name %>
           <%= link_to "変更", edit_movie_path(movie) %>
           <%= link_to "削除する", movie_path(movie), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
         <% end %>

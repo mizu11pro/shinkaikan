@@ -1,7 +1,7 @@
 <div class="new-genre">
 <%= form_with model: @genre, url: genre_path, local: true do |genre| %>
     <h3>ジャンル</h3>
-    <%= genre.text_area :name %>
+    <%= genre.text_field :name %>
     <%= genre.radio_button :is_genre, true, :checked => true  %>表示中
     <%= genre.radio_button :is_genre, false %>非表示
     <%= genre.submit "変更する" %>

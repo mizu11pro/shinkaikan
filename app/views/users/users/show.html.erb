@@ -5,7 +5,7 @@
       </div>
     <% else %>
       <div class="customer-top">
-        <h1>こんにちわ。customer</h1>
+        <h3>ユーザ詳細</h3>
       </div>
     <% end %>
 <% end %>
@@ -15,4 +15,7 @@
 		<p>name</p>
 		<%= @user.name %>
 		<%= link_to "変更する", edit_user_path(@user) %>
+
+		<p>自己紹介</p>
+		<%= @user.introduction %>
 </div>

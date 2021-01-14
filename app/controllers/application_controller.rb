@@ -2,11 +2,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_paremeters, if: :devise_controller?
 
   def after_sign_up_path_for(resource)
-    root_path
+    homes_path
   end
 
   def after_sign_in_path_for(resource)
-    root_path
+    movies_path
   end
 
   def after_sign_out_path_for(resource)

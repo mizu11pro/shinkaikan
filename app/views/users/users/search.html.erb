@@ -1,0 +1,21 @@
+<div class="user-list">
+<% @user_search.each do |user| %>
+    <% if user != current_user %>
+	    <%= attachment_image_tag user, :profile_image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
+	    <%= user.name %>
+	    	<%= link_to followers_path(user_id: user.id) do %>
+			    <%= user.followings.count %>follow
+		    <% end %>
+		    <span>/</span>
+		    <%= link_to followings_path(user_id: user.id) do %>
+			    <%= user.followers.count %>follower
+		    <% end %>
+	            <% if current_user.following?(user) %>
+	              <%= link_to "フォローを外す", relationships_path(user_id: user.id), method: :delete %>
+	            <% else %>
+	              <%= link_to "フォローする", relationships_path(user_id: user.id), method: :post %>
+	            <% end %>
+			  <%= link_to "いいね一覧", favorites_movie_favorites_path(user) %>
+     <% end %>
+<% end %>
+</div>

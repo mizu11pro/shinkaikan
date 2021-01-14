@@ -1,29 +1,34 @@
 Rails.application.routes.draw do
 
+  devise_scope :user do
+    post 'users/guest_sign_in' => 'users/sessions#new_guest'
+  end
+
   devise_for :users, controllers: {
     sessions:       'users/sessions',
     registrations:  'users/registrations',
     passwords:      'users/passwords',
   }
 
-  # namespace :users do
   scope module: :users do
-    root 'movies#index'
-    get 'homes' => 'homes#top', as: :report
+    root 'homes#index'
 
     get 'followings' => 'relationships#followings'
     get 'followers' => 'relationships#followers'
     resource :relationships, only: [:create, :destroy]
 
+    resources :users, except: [:new, :create, :destroy] do
+      get 'favorites' => 'favorites#index'
+      collection do
+        get 'search'
+      end
+    end
     resources :homes, except: [:new, :index, :show]
-    resources :users, except: [:new, :create, :destroy]
-    resources :movies
     resources :genres, except: [:show]
-
+      resources :movies do
+        resources :movie_comments, only: [:create, :destroy]
+        resource :favorites, only: [:create, :destroy]
+      end
   end
-
-  # resources :users do
-  #   resource :relationships, only: [:create, :destroy]
-  # end
 
 end
