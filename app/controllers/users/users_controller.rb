@@ -2,10 +2,6 @@ class Users::UsersController < ApplicationController
 
   def search
     @user_search = User.search(params[:search])
-    p '----------------------'
-    p @user_search
-    p '----------------------'
-    # @users = User.search(search)
   end
 
   def index

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_065205) do
+ActiveRecord::Schema.define(version: 2021_01_12_184110) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -30,12 +30,14 @@ ActiveRecord::Schema.define(version: 2021_01_13_065205) do
     t.text "comment"
     t.integer "user_id"
     t.integer "movie_id"
+    t.float "evaluation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
+    t.string "directed_by"
     t.string "body"
     t.string "image_id"
     t.string "genre_id"
@@ -55,11 +57,6 @@ ActiveRecord::Schema.define(version: 2021_01_13_065205) do
     t.string "image_id"
     t.string "title"
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "searches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

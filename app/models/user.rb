@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :like_movies, dependent: :destroy
 # follow機能
   has_many :of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :of_relationships, source: :follower

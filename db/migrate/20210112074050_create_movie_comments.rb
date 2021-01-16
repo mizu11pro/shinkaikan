@@ -4,6 +4,7 @@ class CreateMovieComments < ActiveRecord::Migration[5.2]
       t.text :comment
       t.integer :user_id
       t.integer :movie_id
+      t.float :evaluation
 
       t.timestamps
     end

@@ -1,43 +1,16 @@
 <div class="movie">
     <%= attachment_image_tag @movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
     <%= @movie.title %>
-    <%= @movie.body %>
+    <%= @movie.directed_by %>
     <%= @movie.genre.name %>
-    <!--<script src="assets/application.js"></script>-->
-    <!--<div id="star"></div>-->
+    <%= @movie.body %>
+    <div class="evaluation-list" data-score="<%= @average_movie_comment %>"></div>
 
     <div class="favorite">
-        <% if @movie.favorited_by?(current_user) %>
-            <p>
-                <%= link_to movie_favorites_path(@movie), method: :delete do %>
-                    ❤<%= @movie.favorites.count %>いいね
-                <% end %>
-            </p>
-        <% else %>
-            <p>
-                <%= link_to movie_favorites_path(@movie), method: :post do %>
-                    ♡<%= @movie.favorites.count %>いいね
-                <% end %>
-            </p>
-        <% end %>
+        <%= render 'users/favorites/favorite', movie: @movie %>
     </div>
 </div>
 
-<div class="new-comment">
-    <%= form_with(model:[@movie, @movie_comment], local: true) do |movie_comment| %>
-        <%= movie_comment.text_field :comment, placeholder: "感想入力欄" %>
-        <%= movie_comment.submit "投稿する" %>
-    <% end %>
-</div>
-<div class="movie-comment">
-    <p>感想 : <%= @movie.movie_comments.count %>件</p>
-    <% @movie.movie_comments.each do |movie_comment| %>
-        <%= movie_comment.created_at.strftime('%Y/%m/%d') %>
-        <%= attachment_image_tag movie_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.jpg" %>
-        <%= movie_comment.user.name %>さん
-        <%= movie_comment.comment %>
-        <% if movie_comment.user == current_user %>
-            <%= link_to "削除", movie_movie_comment_path(@movie, movie_comment), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
-        <% end %>
-    <% end %>
+<div class="movie_comment">
+    <%= render 'users/movie_comment/movie_comment', movie: @movie, movie_comment: @movie_comment %>
 </div>
