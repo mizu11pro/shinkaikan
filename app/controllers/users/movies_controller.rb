@@ -18,31 +18,16 @@ class Users::MoviesController < ApplicationController
     @reports = Report.all.order(id: "DESC")
     @average_movie_comment = MovieComment.average(:evaluation)
     @genres = Genre.where(is_genre: true)
-      # if params[:genre_id].present?
-      #   @genre = Genre.find(params[:genre_id])
-      #   @genre_movie = Genre.movie.where(is_movie: true)
-      # end
       if current_user.is_admin
         @movies = Movie.all.order(id: "DESC")
       else
         @movies = Movie.where(is_movie: true ).order(id: "DESC")
       end
+      if params[:genre_id].present?
+        # @genre = Genre.find(params[:genre_id])
+        # @genre_movie = Genre.movies.where(is_movie: true)
+      end
   end
-
-  def genre_movie
-    @movie = Movie.find(params[:movie_id])
-  end
-
-    # @items = Item.where(is_active: false).page(params[:page]).per(8)
-    # # 全商品一覧商品数表示用
-    # @items_for_index = Item.where(is_active: false)
-    # @genres = Genre.where(is_active: true)
-
-    # if params[:genre_id].present?
-    #   @genre = Genre.find(params[:genre_id])
-    #   # ジャンル別商品一覧のページネーション用
-    #   @genres_for_index = @genre.items.where(is_active: false).page(params[:page]).per(8)
-    # end
 
   def show
     @movie = Movie.find(params[:id])
