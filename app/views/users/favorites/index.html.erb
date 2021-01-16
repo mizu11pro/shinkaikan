@@ -1,0 +1,14 @@
+<% if @movies.exists? %>
+  <div class="movie">
+      <% @movies.each do |movie| %>
+          <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= movie.title %>
+          <%= movie.body %>
+          <%= movie.genre.name %>
+
+          <%= render 'favorite', movie: movie %>
+      <% end %>
+  </div>
+<% else %>
+      <div class="dont-like">現在いいねしている映画はございません</div>
+<% end %>

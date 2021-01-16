@@ -1,0 +1,12 @@
+<% if @users.exists? %>
+  <h3>
+      <% if @user == current_user %>
+        あなたのフォロワー
+      <% else %>
+        <%= @user.name %>さんのフォロワー
+      <% end %>
+  </h3>
+  <%= render 'relationship', users: @users %>
+<% else %>
+    <h3>フォロワーは現在いません</h3>
+<% end %>

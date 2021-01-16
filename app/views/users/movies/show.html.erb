@@ -1,0 +1,16 @@
+<div class="movie">
+    <%= attachment_image_tag @movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
+    <%= @movie.title %>
+    <%= @movie.directed_by %>
+    <%= @movie.genre.name %>
+    <%= @movie.body %>
+    <div class="evaluation-list" data-score="<%= @average_movie_comment %>"></div>
+
+    <div class="favorite">
+        <%= render 'users/favorites/favorite', movie: @movie %>
+    </div>
+</div>
+
+<div class="movie_comment">
+    <%= render 'users/movie_comment/movie_comment', movie: @movie, movie_comment: @movie_comment %>
+</div>

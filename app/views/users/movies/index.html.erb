@@ -1,0 +1,21 @@
+<div class="report">
+  <h3>お知らせ</h3>
+  <% @reports.each do |report| %>
+    <%= attachment_image_tag report, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
+    <%= report.title %>
+    <%= report.body %>
+  <% end %>
+</div>
+
+<% if current_user.is_admin? == true %>
+    <%= link_to "新規映画作成", new_movie_path %>
+<% end %>
+
+<div class="genre">
+  <%= render 'genre', genres: @genres %>
+  <% if @genre.present? %>
+    <%= render 'genre_movie', genre_movie: @genre_movie, average_movie_comment: @average_movie_comment %>
+  <% else %>
+    <%= render 'all_movie', movies: @movies, average_movie_comment: @average_movie_comment %>
+  <% end %>
+</div>

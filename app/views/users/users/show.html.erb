@@ -1,0 +1,12 @@
+<div class="my-page">
+  <%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
+	name / <%= @user.name %>
+	<%= render 'users/relationships/follow_count', user: @user %>
+	<p>自己紹介</p>
+	<%= @user.introduction %>
+	  <%= render 'users/relationships/follow_button', user: @user %>
+		<%= link_to "いいね一覧", user_favorites_path(current_user) %>
+		<% if @user == current_user %>
+		  <%= link_to "設定", edit_user_path(@user) %>
+		<% end %>
+</div>

@@ -1,0 +1,13 @@
+<%= form_with model: @user, url: user_path, local: true do |user| %>
+  <h3>Photo</h3>
+  <%= user.attachment_field :profile_image %>
+  <h3>Name</h3>
+  <%= user.text_area :name %>
+  <h3>introduction</h3>
+  <%= user.text_area :introduction %>
+  <h3>email</h3>
+  <%= user.text_area :email %>
+  <!--<h3>password</h3>-->
+  <!--%= user.text_area :password %>-->
+  <%= user.submit "変更を保存する" %>
+<% end %>

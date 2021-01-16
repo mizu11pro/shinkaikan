@@ -1,0 +1,16 @@
+<table>
+    <thead>
+      <tr>
+        <th>ジャンル検索</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% genres.each do |genre| %>
+        <td>
+          <%= link_to genre.name, movies_path(genre_id: genre.id) %>
+        </td>
+      </tr>
+        <% end %>
+    </tbody>
+</table>

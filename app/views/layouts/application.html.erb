@@ -6,18 +6,44 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>-->
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
-    <% if admin_signed_in? %>
-      <li>
-        <%= link_to "logout", destroy_admin_session_path, method: :delete %>
-      </li>
+    <% if user_signed_in? %>
+    <div class="movie-search">
+      <%= form_with url: search_movies_path, method: :get, local: true do |search| %>
+        <%= search.text_field :search, placeholder: "映画タイトル入力欄" %>
+        <%= search.submit "検索" %>
+      <% end %>
+    </div>
+        <% if current_user.is_admin? %>
+          <li>
+            <!--admin側のheaderを作成-->
+            <%= link_to "Top", root_path %>
+            <%= link_to "Genre", genres_path %>
+            <%= link_to "Movie",movies_path %>
+            <%= link_to "User", users_path %>
+          </li>
+        <% else %>
+          <li>
+            <!--customer側のlogin時のheaderを作成-->
+            <%= link_to "Top", root_path %>
+            <%= link_to "movies", movies_path %>
+            <%= link_to "Users", users_path %>
+            <%= link_to "DM", user_path(current_user) %>
+          </li>
+        <% end %>
+        <li>
+          <%= link_to "logout", destroy_user_session_path, method: :delete %>
+        </li>
     <% else %>
-      <li>
-        <%= link_to "log_in", new_admin_session_path %>
-      </li>
+        <li>
+          <%= link_to "ログイン", user_session_path %>
+          <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post %>
+        </li>
     <% end %>
 
     <%= yield %>
