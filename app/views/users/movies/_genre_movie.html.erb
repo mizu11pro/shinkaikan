@@ -4,10 +4,9 @@
           <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
       <% end %>
           <%= movie.title %>
+          <%= movie.movie_comments.average(:evaluation) %>
           <%= average_movie_comment %>
           <%= movie.genre.name %>
-          <!--%= movie.directed_by %>-->
-          <!--%= movie.body %>-->
             <% if current_user.is_admin? == true %>
                 <%= movie.is_movie ? '表示中' : '非表示' %>
                 <%= link_to "変更", edit_movie_path(movie) %>

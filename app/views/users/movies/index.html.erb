@@ -14,7 +14,7 @@
 <div class="genre">
   <%= render 'genre', genres: @genres %>
   <% if @genre.present? %>
-    <%= render 'genre_movie', genre_movie: @genre_movie, average_movie_comment: @average_movie_comment %>
+    <%= render 'genre_movie', movies: @genre_movies, average_movie_comment: @average_movie_comment %>
   <% else %>
     <%= render 'all_movie', movies: @movies, average_movie_comment: @average_movie_comment %>
   <% end %>

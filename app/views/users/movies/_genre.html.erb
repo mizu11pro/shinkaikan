@@ -8,7 +8,9 @@
       <tr>
         <% genres.each do |genre| %>
         <td>
-          <%= link_to genre.name, movies_path(genre_id: genre.id) %>
+          <%= link_to movies_path(genre_id: genre.id) do %>
+            <%= genre.name %>
+          <% end %>
         </td>
       </tr>
         <% end %>

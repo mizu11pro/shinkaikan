@@ -2,11 +2,36 @@
   <%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
 	name / <%= @user.name %>
 	<%= render 'users/relationships/follow_count', user: @user %>
+	<div class="evaluation">
+	</div>
 	<p>自己紹介</p>
 	<%= @user.introduction %>
-	  <%= render 'users/relationships/follow_button', user: @user %>
-		<%= link_to "いいね一覧", user_favorites_path(current_user) %>
+	<%= link_to "いいね一覧", user_favorites_path(current_user) %>
 		<% if @user == current_user %>
-		  <%= link_to "設定", edit_user_path(@user) %>
+		  	<%= link_to "設定", edit_user_path(@user) %>
+			<div class="message-list">
+				<% @anotherEntries.each do |entry| %>
+				  <%= entry.user.name %>
+				  <%= Message.find_by(id: entry.room.message_ids.last).message %>
+				  <%= link_to "DMをする", message_path(entry.user.id) %>
+				<% end %>
+			</div>
+		<% else %>
+	 		<%= render 'users/relationships/follow_button', user: @user %>
+			<%= link_to "DMをする", message_path(@user.id) %>
+
+				<% if @movies.exists? %>
+				  <div class="movie">
+				      <% @movies.each do |movie| %>
+				          <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
+				          <%= movie.title %>
+				          <%= movie.body %>
+				          <%= movie.genre.name %>
+				          <%= render 'favorite', movie: movie %>
+				      <% end %>
+				  </div>
+				<% else %>
+				      <div class="dont-like">現在いいねしている映画はございません</div>
+				<% end %>
 		<% end %>
 </div>

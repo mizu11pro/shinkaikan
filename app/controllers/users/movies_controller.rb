@@ -16,7 +16,6 @@ class Users::MoviesController < ApplicationController
 
   def index
     @reports = Report.all.order(id: "DESC")
-    @average_movie_comment = MovieComment.average(:evaluation)
     @genres = Genre.where(is_genre: true)
       if current_user.is_admin
         @movies = Movie.all.order(id: "DESC")
@@ -24,8 +23,8 @@ class Users::MoviesController < ApplicationController
         @movies = Movie.where(is_movie: true ).order(id: "DESC")
       end
       if params[:genre_id].present?
-        # @genre = Genre.find(params[:genre_id])
-        # @genre_movie = Genre.movies.where(is_movie: true)
+        @genre = Genre.find(params[:genre_id])
+        @genre_movies = @genre.movies.where(is_movie: true )
       end
   end
 
@@ -33,7 +32,7 @@ class Users::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @movie_comment = MovieComment.new
     @movie_comments = MovieComment.all.order(id: "DESC")
-    @average_movie_comment = MovieComment.average(:evaluation)
+    @user_comment = MovieComment.where(user_id: current_user)
   end
 
   def edit

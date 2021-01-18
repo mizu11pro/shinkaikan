@@ -1,4 +1,6 @@
-<% if movie_comment.present? %>
+<% if user_comment.exists? %>
+  <h3>感想の投稿はお一つまでになります。</h3>
+<% else %>
 <div class="new-comment">
     <%= form_with(model:[movie, movie_comment], local: true) do |movie_comment| %>
         <div id="evaluation">
@@ -9,8 +11,6 @@
           <%= movie_comment.submit "投稿する" %>
     <% end %>
 </div>
-<% else %>
-  <h3>感想の投稿はお一つまでになります。</h3>
 <% end %>
 
 <div class="movie-comment">
