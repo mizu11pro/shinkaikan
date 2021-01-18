@@ -13,18 +13,9 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-//= require jquery
-//= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery
+//= require rails-ujs
+//= require jquery.raty.js
 //= require_tree .
-
-$(function () {
-  $('#star').raty({
-    size: 36,
-    starOff: "/assets/star-off.png",
-    starOn: "/assets/star-on.png",
-    starHalf: "/assets/star-half.png",
-    scoreName: "score"
-  });
-});

@@ -1,22 +1,14 @@
 <% if @movies.exists? %>
-    <div class="movie">
+  <div class="movie">
       <% @movies.each do |movie| %>
-        <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
-        <%= movie.title %>
-        <%= movie.body %>
-        <%= movie.genre.name %>
+          <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= movie.title %>
+          <%= movie.body %>
+          <%= movie.genre.name %>
 
-        <div class="favorite">
-          <% if movie.favorited_by?(current_user) %>
-                <p>
-                  <%= link_to movie_favorites_path(movie), method: :delete do %>
-                     ❤<%= movie.favorites.count %>いいね
-                  <% end %>
-                </p>
-          <% end %>
-        </div>
+          <%= render 'favorite', movie: movie %>
       <% end %>
-    </div>
+  </div>
 <% else %>
-    <div class="dont-like">現在いいねしている映画はございません</div>
+      <div class="dont-like">現在いいねしている映画はございません</div>
 <% end %>

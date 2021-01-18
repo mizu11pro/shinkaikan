@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_065205) do
+ActiveRecord::Schema.define(version: 2021_01_16_131327) do
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -26,16 +33,26 @@ ActiveRecord::Schema.define(version: 2021_01_13_065205) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.text "message"
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "movie_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
     t.integer "movie_id"
+    t.float "evaluation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
+    t.string "directed_by"
     t.string "body"
     t.string "image_id"
     t.string "genre_id"
@@ -59,7 +76,8 @@ ActiveRecord::Schema.define(version: 2021_01_13_065205) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "searches", force: :cascade do |t|
+  create_table "rooms", force: :cascade do |t|
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -76,6 +94,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_065205) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "introduction"
+    t.integer "movie_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

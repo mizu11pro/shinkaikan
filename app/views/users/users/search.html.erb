@@ -1,3 +1,5 @@
+"<%= params[:search] %>"の検索結果
+
 <div class="user-list">
 <% @user_search.each do |user| %>
     <% if user != current_user %>
@@ -15,7 +17,7 @@
 	            <% else %>
 	              <%= link_to "フォローする", relationships_path(user_id: user.id), method: :post %>
 	            <% end %>
-			  <%= link_to "いいね一覧", favorites_movie_favorites_path(user) %>
+			  <%= link_to "いいね一覧", user_favorites_path(user) %>
      <% end %>
 <% end %>
 </div>

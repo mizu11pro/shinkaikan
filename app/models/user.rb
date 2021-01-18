@@ -1,13 +1,16 @@
 class User < ApplicationRecord
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
   attachment :profile_image
-
 
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :like_movies, dependent: :destroy
+# DM機能
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :room, through: :entry
+
 # follow機能
   has_many :of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :of_relationships, source: :follower
@@ -25,6 +28,7 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+# /follow機能
 
   def self.search(search)
     return User.all unless search

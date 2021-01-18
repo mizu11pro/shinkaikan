@@ -6,18 +6,18 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <!--%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>-->
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <% if user_signed_in? %>
-    <div class="search">
-      <%= form_with url: search_users_path, method: :get, local: true do |search| %>
-        <%= search.text_field :search %>
-        <%= search.submit "検索" %>
-      <% end %>
-    </div>
+      <div class="movie-search">
+        <%= form_with url: search_movies_path, method: :get, local: true do |search| %>
+          <%= search.text_field :search, placeholder: "映画タイトル入力欄" %>
+          <%= search.submit "検索" %>
+        <% end %>
+      </div>
         <% if current_user.is_admin? %>
           <li>
             <!--admin側のheaderを作成-->

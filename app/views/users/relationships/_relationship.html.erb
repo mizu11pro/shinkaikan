@@ -4,12 +4,6 @@
     	<%= attachment_image_tag user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
   		name / <%= user.name %>
   	<% end %>
-    		<% if user != current_user %>
-          <% if current_user.following?(user) %>
-            <%= link_to "フォローを外す", relationships_path(user_id: user.id), method: :delete %>
-        <% else %>
-            <%= link_to "フォローする", relationships_path(user_id: user.id), method: :post %>
-          <% end %>
-        <% end %>
+  	<%= render 'follow_button', user: user %>
   <% end %>
 </div>

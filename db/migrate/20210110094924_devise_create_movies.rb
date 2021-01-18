@@ -5,10 +5,11 @@ class DeviseCreateMovies < ActiveRecord::Migration[5.2]
     create_table :movies do |t|
 
       t.string :title
+      t.string :directed_by
       t.string :body
       t.string :image_id
       t.string :genre_id
-      t.boolean :is_movie,
+      t.boolean :is_movie
 
       t.timestamps
     end

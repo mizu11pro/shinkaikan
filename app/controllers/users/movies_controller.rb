@@ -1,5 +1,9 @@
 class Users::MoviesController < ApplicationController
 
+  def search
+    @movie_search = Movie.search(params[:search])
+  end
+
   def new
     @movie = Movie.new
   end
@@ -12,17 +16,23 @@ class Users::MoviesController < ApplicationController
 
   def index
     @reports = Report.all.order(id: "DESC")
-    if current_user.is_admin
-      @movies = Movie.all.order(id: "DESC")
-    else
-      @movies = Movie.where(is_movie: true ).order(id: "DESC")
-    end
+    @genres = Genre.where(is_genre: true)
+      if current_user.is_admin
+        @movies = Movie.all.order(id: "DESC")
+      else
+        @movies = Movie.where(is_movie: true ).order(id: "DESC")
+      end
+      if params[:genre_id].present?
+        @genre = Genre.find(params[:genre_id])
+        @genre_movies = @genre.movies.where(is_movie: true )
+      end
   end
 
   def show
     @movie = Movie.find(params[:id])
     @movie_comment = MovieComment.new
     @movie_comments = MovieComment.all.order(id: "DESC")
+    @user_comment = MovieComment.where(user_id: current_user)
   end
 
   def edit
@@ -44,7 +54,7 @@ class Users::MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :body, :image, :is_movie, :genre_id)
+    params.require(:movie).permit(:title, :directed_by, :body, :image, :is_movie, :genre_id)
   end
 
 end

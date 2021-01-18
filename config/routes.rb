@@ -23,11 +23,16 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
+
+    resources :messages, only: [:show, :create]
     resources :homes, except: [:new, :index, :show]
     resources :genres, except: [:show]
       resources :movies do
         resources :movie_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
+        collection do
+          get 'search'
+        end
       end
   end
 

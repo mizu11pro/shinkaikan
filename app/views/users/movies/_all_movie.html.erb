@@ -1,0 +1,16 @@
+<div class="movie">
+  <% movies.each do |movie| %>
+  <%#= movie.movie_comments.inspect %>
+      <%= link_to movie_path(movie) do %>
+          <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
+      <% end %>
+          <%= movie.title %>
+          <%= movie.movie_comments.average(:evaluation) %>
+          <%= movie.genre.name %>
+            <% if current_user.is_admin? == true %>
+                <%= movie.is_movie ? '表示中' : '非表示' %>
+                <%= link_to "変更", edit_movie_path(movie) %>
+                <%= link_to "削除する", movie_path(movie), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} %>
+            <% end %>
+<% end %>
+</div>

@@ -1,0 +1,7 @@
+	<%= link_to followers_path(user_id: user.id) do %>
+		<%= user.followings.count %>follow
+	<% end %>
+	<span>/</span>
+	<%= link_to followings_path(user_id: user.id) do %>
+		<%= user.followers.count %>follower
+	<% end %>
