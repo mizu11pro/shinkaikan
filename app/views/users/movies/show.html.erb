@@ -1,4 +1,4 @@
-<div class="movie">
+<div class="movie" id="movie_<%= @movie.id %>">
     <%= attachment_image_tag @movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
     <%= @movie.title %>
     <%= @movie.directed_by %>
@@ -6,12 +6,11 @@
     <%= @movie.body %>
     <div class="evaluation-list" data-score="<%= @movie.movie_comments.average(:evaluation) %>"></div>
 
-
-    <div class="favorite">
+    <div class="favorite-btn">
         <%= render 'users/favorites/favorite', movie: @movie %>
     </div>
 </div>
 
-<div class="movie_comment">
-    <%= render 'users/movie_comment/movie_comment', movie: @movie, movie_comment: @movie_comment, user_comment: @user_comment %>
+<div class="comment">
+    <%= render 'users/movie_comments/movie_comment', movie: @movie, movie_comment: @movie_comment, user_comment: @user_comment %>
 </div>

@@ -1,37 +1,23 @@
-<h4><%= @user.name %> さんとのチャット</h4>
+<div class="message">
+  <h4><%= @user.name %> さんとのチャット</h4>
 
-<table class="message">
-  <thead>
-    <tr>
-      <th><%= @user.name %>さん</th>
-      <th>あなた</th>
-    </tr>
-  </thead>
-  <% @messages.each do |message| %>
-      <% if message.user_id != current_user.id %>
-        <tbody>
-          <tr>
-            <th>
-              <p><%= message.message %></p>
-            </th>
-            <th></th>
-          </tr>
-        </tbody>
-      <% else %>
-        <tbody>
-          <tr>
-            <th></th>
-            <th>
-              <p><%= message.message %></p>
-            </th>
-          </tr>
-        </tbody>
-      <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= @user.name %>さん</th>
+        <th>あなた</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @messages.each do |message| %>
+      <%= render 'message', message: message %>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= form_with model: @message, remote: true do |message| %>
+    <%= message.text_field :message %>
+    <%= message.hidden_field :room_id %>
+    <%= message.submit "送信" %>
   <% end %>
-</table>
-
-<%= form_with model: @message do |message| %>
-  <%= message.text_field :message %>
-  <%= message.hidden_field :room_id %>
-  <%= message.submit "送信" %>
-<% end %>
+</div>

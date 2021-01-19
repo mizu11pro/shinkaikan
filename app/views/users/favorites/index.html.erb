@@ -1,14 +1,13 @@
-<% if @movies.exists? %>
-  <div class="movie">
-      <% @movies.each do |movie| %>
-          <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
-          <%= movie.title %>
-          <%= movie.body %>
-          <%= movie.genre.name %>
+<div class="favorite-btn">
+  <% if @movies.exists? %>
+        <% @movies.each do |movie| %>
+          <%= render 'favorite_index', movie: movie %>
+        <% end %>
+  <% else %>
+        <div class="dont-like">現在いいねしている映画はございません</div>
+  <% end %>
+</div>
 
-          <%= render 'favorite', movie: movie %>
-      <% end %>
-  </div>
-<% else %>
-      <div class="dont-like">現在いいねしている映画はございません</div>
-<% end %>
+<div class="report">
+  <%= render 'users/homes/customer.index', reports: @reports %>
+</div>

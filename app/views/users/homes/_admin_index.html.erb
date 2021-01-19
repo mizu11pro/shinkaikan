@@ -1,6 +1,6 @@
 <div class="new-report">
     <h3>お知らせ投稿</h3>
-    <%= form_with model: report, url: homes_path, local: true do |report| %>
+    <%= form_with model: report, url: homes_path, remote: true do |report| %>
         <h3>画像</h3>
         <%= report.attachment_field :image %>
         <h3>お題</h3>
@@ -12,25 +12,12 @@
 </div>
 
 <div class="report">
-  <h3>お知らせ欄</h3>
+  <h3>お知らせ</h3>
   <table class="table">
-    <thead>
-      <tr>
-        <th>Photo</th>
-        <th>title</th>
-        <th>body</th>
-        <th colspan="4">編集</th>
-      </tr>
-    </thead>
     <tbody>
-      <tr>
-        <% reports.each do |report| %>
-          <td><%= attachment_image_tag report, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %></td>
-          <td><%= report.title %></td>
-          <td><%= report.body %></td>
-          <td><%= link_to "編集", edit_home_path(report) %></td>
-        <% end %>
-      </tr>
+      <% reports.each do |report| %>
+        <%= render 'report_list', report: report %>
+      <% end %>
     </tbody>
   </table>
 </div>
