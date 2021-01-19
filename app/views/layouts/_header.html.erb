@@ -1,0 +1,37 @@
+<header>
+   <% if user_signed_in? %>
+      <%= link_to :back do %>
+	      <span><i class="fas fa-arrow-alt-circle-left"></i> Back</span>
+      <% end %>
+      <span class="movie-search">
+        <%= form_with url: search_movies_path, method: :get, local: true do |search| %>
+          <%= search.text_field :search, placeholder: "映画タイトル入力欄" %>
+          <%= search.submit "検索" %>
+        <% end %>
+      </span>
+        <% if current_user.is_admin? %>
+          <ul>
+            <li><%= link_to "Top", root_path, class: 'fab fa-buffer' %></li>
+            <li><%= link_to "Genre", genres_path, class: 'fas fa-file-signature' %></li>
+            <li><%= link_to "Movie",movies_path, class: 'fas fa-film' %></li>
+            <li><%= link_to "User", users_path, class: 'fas fa-users' %></li>
+          </ul>
+        <% else %>
+          <ul>
+            <li><%= link_to "Top", root_path, class: 'fab fa-buffer' %></li>
+            <li><%= link_to "movie", movies_path, class: 'fas fa-video' %></li>
+            <li><%= link_to "User", users_path, class: 'fas fa-users' %></li>
+            <li><%= link_to "DM", user_path(current_user), class: 'far fa-comment-dots' %></li>
+          </ul>
+        <% end %>
+        <li>
+          <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'fas fa-outdent' %>
+        </li>
+    <% else %>
+        <ul>
+          <li><%= link_to "ログイン", user_session_path %></li>
+          <li><%= link_to "新規登録", new_user_registration_path %></li>
+          <li><%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post %></li>
+        </ul>
+    <% end %>
+</header>

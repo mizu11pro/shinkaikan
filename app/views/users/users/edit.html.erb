@@ -2,12 +2,10 @@
   <h3>Photo</h3>
   <%= user.attachment_field :profile_image %>
   <h3>Name</h3>
-  <%= user.text_area :name %>
-  <h3>introduction</h3>
+  <%= user.text_field :name %>
+  <h3>Introduction</h3>
   <%= user.text_area :introduction %>
-  <h3>email</h3>
-  <%= user.text_area :email %>
-  <!--<h3>password</h3>-->
-  <!--%= user.text_area :password %>-->
+  <h3>Email</h3>
+  <%= user.text_field :email %>
   <%= user.submit "変更を保存する" %>
 <% end %>

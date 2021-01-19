@@ -1,0 +1,23 @@
+<div class="message">
+  <h4><%= @user.name %> さんとのチャット</h4>
+
+  <table>
+    <thead>
+      <tr>
+        <th><%= @user.name %>さん</th>
+        <th>あなた</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @messages.each do |message| %>
+      <%= render 'message', message: message %>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= form_with model: @message, remote: true do |message| %>
+    <%= message.text_field :message %>
+    <%= message.hidden_field :room_id %>
+    <%= message.submit "送信" %>
+  <% end %>
+</div>

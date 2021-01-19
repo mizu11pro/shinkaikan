@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  post '/rate' => 'rater#create', :as => 'rate'
   devise_scope :user do
     post 'users/guest_sign_in' => 'users/sessions#new_guest'
   end
@@ -24,6 +23,8 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
+
+    resources :messages, only: [:show, :create]
     resources :homes, except: [:new, :index, :show]
     resources :genres, except: [:show]
       resources :movies do
