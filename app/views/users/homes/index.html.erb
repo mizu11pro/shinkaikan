@@ -1,14 +1,13 @@
 <% if user_signed_in? %>
 
     <% if  current_user.is_admin? != true %>
-    <!--customer-->
-    <div class="backimage">
-      <h4>新海館とは..</h4>
-    </div>
-
+      <div class="backimage">
+        <h4>新海館とは..</h4>
+      </div>
     <% else %>
-    <!--admin-->
-      <div class="report_list"><%= render 'admin_index', report: @report, reports: @reports %></div>
+    <div class="new-report">
+      <%= render 'admin_index', report: @report, reports: @reports %>
+    </div>
     <% end %>
 
 <% end %>
