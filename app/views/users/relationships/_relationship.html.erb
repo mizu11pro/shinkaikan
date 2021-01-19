@@ -1,9 +1,9 @@
-<div class="follower">
+<div class="follow"">
   <% users.each do |user| %>
     <%= link_to user_path(user) do %>
     	<%= attachment_image_tag user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
-  		name / <%= user.name %>
   	<% end %>
-  	<%= render 'follow_button', user: user %>
+  		name / <%= user.name %>
+  	<div id="relationships_<%= user.id %>"><%= render 'follow_button', user: user %></div>
   <% end %>
 </div>

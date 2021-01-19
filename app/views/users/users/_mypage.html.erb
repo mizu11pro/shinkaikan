@@ -1,0 +1,10 @@
+<%= link_to user_path(user) do %>
+  	<%= attachment_image_tag user, :profile_image, size: "50x50", format: 'jpeg', fallback: "017c44c97a38c1c4999681e28c39271d.png" %>
+<% end %>
+		name / <%= user.name %>
+		<span id="follow_count_<%= user.id %>"><%= render 'users/relationships/follow_count', user: user %></span>
+		<%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-grin-hearts' %>
+				<% if user == current_user %>
+				  <%= link_to "設定", edit_user_path(user), class: 'fas fa-cogs' %>
+				<% end %>
+		<span>自己紹介 /</span> <%= user.introduction %>

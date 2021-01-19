@@ -1,4 +1,5 @@
 class Users::HomesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @report = Report.new
@@ -6,13 +7,18 @@ class Users::HomesController < ApplicationController
   end
 
   def create
+    @reports = Report.all
     @report = Report.new(report_params)
     @report.save
-    redirect_to root_path
   end
 
   def edit
     @report = Report.find(params[:id])
+      if @user == current_user
+        render "edit"
+      else
+        redirect_to user_path(current_user)
+      end
   end
 
   def update
@@ -22,9 +28,9 @@ class Users::HomesController < ApplicationController
   end
 
   def destroy
+    @reports = Report.all
     @report = Report.find(params[:id])
     @report.destroy
-    redirect_to root_path
   end
 
   private

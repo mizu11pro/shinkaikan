@@ -1,12 +1,14 @@
-<% if @users.exists? %>
+<div class="follower">
+  <% if @users.exists? %>
     <h3>
-      <% if @user == current_user %>
-        あなたがフォローしています
-      <% else %>
-        <%= @user.name %>さんがフォローしています
-      <% end %>
+        <% if @user == current_user %>
+          あなたがフォローしています
+        <% else %>
+          <%= @user.name %>さんがフォローしています
+        <% end %>
     </h3>
-    <%= render 'relationship', users: @users %>
-<% else %>
-    <h3>フォローしているユーザは現在いません</h3>
-<% end %>
+    <div id="relationships_<%= @user.id %>"><%= render 'relationship', users: @users %></div>
+  <% else %>
+      <h3>フォローしているユーザは現在いません</h3>
+  <% end %>
+</div>

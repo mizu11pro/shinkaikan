@@ -1,4 +1,5 @@
 class Users::MoviesController < ApplicationController
+  before_action :authenticate_user!
 
   def search
     @movie_search = Movie.search(params[:search])
@@ -15,7 +16,8 @@ class Users::MoviesController < ApplicationController
   end
 
   def index
-    @reports = Report.all.order(id: "DESC")
+    @reports = Report.all.order(created_at: "DESC").limit(3)
+    @rank_movie = Movie.all.order(evaluation: :desc).limit(3)
     @genres = Genre.where(is_genre: true)
       if current_user.is_admin
         @movies = Movie.all.order(id: "DESC")
@@ -32,7 +34,7 @@ class Users::MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     @movie_comment = MovieComment.new
     @movie_comments = MovieComment.all.order(id: "DESC")
-    @user_comment = MovieComment.where(user_id: current_user)
+    @user_comment = @movie.movie_comments.where(user_id: current_user)
   end
 
   def edit

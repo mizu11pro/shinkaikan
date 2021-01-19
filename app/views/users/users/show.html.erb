@@ -1,37 +1,31 @@
-<div class="my-page">
-  <%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
-	name / <%= @user.name %>
-	<%= render 'users/relationships/follow_count', user: @user %>
-	<div class="evaluation">
-	</div>
-	<p>自己紹介</p>
-	<%= @user.introduction %>
-	<%= link_to "いいね一覧", user_favorites_path(current_user) %>
-		<% if @user == current_user %>
-		  	<%= link_to "設定", edit_user_path(@user) %>
-			<div class="message-list">
-				<% @anotherEntries.each do |entry| %>
-				  <%= entry.user.name %>
-				  <%= Message.find_by(id: entry.room.message_ids.last).message %>
-				  <%= link_to "DMをする", message_path(entry.user.id) %>
-				<% end %>
-			</div>
-		<% else %>
-	 		<%= render 'users/relationships/follow_button', user: @user %>
-			<%= link_to "DMをする", message_path(@user.id) %>
+<%= render 'mypage', user: @user %>
 
-				<% if @movies.exists? %>
-				  <div class="movie">
-				      <% @movies.each do |movie| %>
-				          <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
-				          <%= movie.title %>
-				          <%= movie.body %>
-				          <%= movie.genre.name %>
-				          <%= render 'favorite', movie: movie %>
-				      <% end %>
-				  </div>
-				<% else %>
-				      <div class="dont-like">現在いいねしている映画はございません</div>
+<% if @user == current_user %>
+		<div class="message-list">
+				<% @anotherEntries.each do |entry| %>
+						<%= attachment_image_tag entry.user, :profile_image, size: "50x50", format: 'jpeg', fallback: "017c44c97a38c1c4999681e28c39271d.png" %>
+					  <%= entry.user.name %>
+					  <% if entry.room.message_ids.last.present? %>
+					  	 <%= Message.find_by(id: entry.room.message_ids.last).message %>
+					  <% end %>
+					  <%= link_to "DMをする", message_path(entry.user.id), class: 'fas fa-comments' %>
 				<% end %>
-		<% end %>
+		</div>
+<% else %>
+	 	<div id="relationships_<%= @user.id %>"><%= render 'users/relationships/follow_button', user: @user, class: 'fas fa-user-check' %></div>
+		<%= link_to "DMをする", message_path(@user.id), class: 'fas fa-comments' %>
+<% end %>
+
+<div class="ranking">
+	<% @rank_movie.each.with_index(1) do |movie, i| %>
+	<p>
+		第<%= i %>位
+		<div class="evaluation-list" data-score="<%= movie.movie_comments.average(:evaluation) %>"></div>
+		<%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "017c44c97a38c1c4999681e28c39271d.png" %>
+		<%= movie.title %>
+		<%= movie.directed_by %>
+		<%= movie.genre.name %>
+		<%= movie.body %>
+	</p>
+	<% end %>
 </div>

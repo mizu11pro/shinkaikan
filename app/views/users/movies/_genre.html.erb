@@ -5,14 +5,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <% genres.each do |genre| %>
-        <td>
-          <%= link_to movies_path(genre_id: genre.id) do %>
-            <%= genre.name %>
-          <% end %>
-        </td>
-      </tr>
-        <% end %>
+      <td><%= link_to "全作品", movies_path %></td>
+      <% genres.each do |genre| %>
+        <tr>
+          <td>
+            <%= link_to movies_path(genre_id: genre.id) do %>
+              <%= genre.name %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     </tbody>
 </table>

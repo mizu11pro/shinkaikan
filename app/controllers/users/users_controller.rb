@@ -1,4 +1,5 @@
 class Users::UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def search
     @user_search = User.search(params[:search])
@@ -12,9 +13,9 @@ class Users::UsersController < ApplicationController
   end
 
   def show
-    movie_ids = Favorite.where(user_id: params[:user_id]).pluck(:movie_id)
-    @movies = Movie.where(id: movie_ids)
     @user = User.find(params[:id])
+    @favorites = @user.favorites.where(movie_id: params[:movie_id])
+    @rank_movie = Movie.all.order(evaluation: :desc).limit(3)
     @currentEntries = current_user.entries
     myRoomIds = []
       @currentEntries.each do | entry |
@@ -25,6 +26,11 @@ class Users::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+      if @user == current_user
+        render "edit"
+      else
+        redirect_to user_path(current_user)
+      end
   end
 
   def update

@@ -1,18 +1,29 @@
 class Users::GenresController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @genre = Genre.new
     @genres = Genre.all
+      if current_user.is_admin == true
+        render "index"
+      else
+        redirect_to user_path(current_user)
+      end
   end
 
   def create
+    @genres = Genre.all
     @genre = Genre.new(genre_params)
     @genre.save
-    redirect_to genres_path
   end
 
   def edit
     @genre = Genre.find(params[:id])
+      if current_user.is_admin == true
+        render "edit"
+      else
+        redirect_to user_path(current_user)
+      end
   end
 
   def update
@@ -22,9 +33,9 @@ class Users::GenresController < ApplicationController
   end
 
   def destroy
+    @genres = Genre.all
     @genre = Genre.find(params[:id])
     @genre.destroy
-    redirect_to genres_path
   end
 
   private
