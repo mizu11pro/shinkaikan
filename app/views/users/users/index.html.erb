@@ -17,7 +17,7 @@
 			<% end %>
 			<%= user.name %>
 
-			<%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-grin-hearts' %>
+			<%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-thumbs-up' %>
 			<%= link_to "DMをする", message_path(user.id), class: 'fas fa-comments' %>
 			<span id="relationships_<%= user.id %>"><%= render 'users/relationships/follow_button', user: user %></span>
 			<span id="follow_count_<%= user.id %>"><%= render 'users/relationships/follow_count', user: user %></span>

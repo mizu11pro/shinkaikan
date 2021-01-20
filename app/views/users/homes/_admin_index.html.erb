@@ -1,12 +1,9 @@
 <div class="new-report">
     <h3>お知らせ投稿</h3>
     <%= form_with model: report, url: homes_path, remote: true do |report| %>
-        <h3>画像</h3>
-        <%= report.attachment_field :image %>
-        <h3>お題</h3>
-        <%= report.text_field :title %>
-        <h3>内容</h3>
-        <%= report.text_area :body %>
+        <h3>画像</h3><%= report.attachment_field :image %>
+        <h3>お題</h3><%= report.text_field :title %>
+        <h3>内容</h3><%= report.text_area :body %>
         <%= report.submit '投稿' %>
     <% end %>
 </div>
@@ -16,7 +13,15 @@
   <table class="table">
     <tbody>
       <% reports.each do |report| %>
-        <%= render 'report_list', report: report %>
+        <tr>
+          <td><%= attachment_image_tag report, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %></td>
+          <td><%= report.title %></td>
+          <td><%= report.body %></td>
+          <% if current_user.is_admin == true %>
+            <td><%= link_to "編集", edit_home_path(report) %></td>
+            <td><%= link_to "削除", home_path(report), method: :delete,  remote: true, data: {confirm: "削除してもよろしいですか？"} %></td>
+          <% end %>
+        </tr>
       <% end %>
     </tbody>
   </table>
