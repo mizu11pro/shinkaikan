@@ -1,9 +1,10 @@
+<%= render 'users/users/error_message', user: @user %>
 <%= form_with model: @user, url: user_path, local: true do |user| %>
-  <h3>Photo</h3>
+  <h3>Photo</h4>
   <%= user.attachment_field :profile_image %>
-  <h3>Name</h3>
+  <h3>Name(2~10文字)</h4>
   <%= user.text_field :name %>
-  <h3>Introduction</h3>
+  <h3>Introduction(~100文字)</h4>
   <%= user.text_area :introduction %>
   <h3>Email</h3>
   <%= user.text_field :email %>

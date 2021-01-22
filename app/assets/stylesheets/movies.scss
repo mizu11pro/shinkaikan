@@ -1,3 +1,35 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// index
+ .fa-star{
+  color: #FF8B26;
+ }
+
+ .genre {
+  margin-left: 30px;
+ }
+
+// show
+.movie-show {
+ text-align: center;
+}
+
+.introduction {
+ background-color: rgba( 999, 999, 999, 0.5 );
+ height: 150px;
+ font-weight: bold;
+ color: black;
+ border-radius: 20px;
+}
+
+// edit
+.edit-movie {
+ text-align: center;
+ padding: 250px 30px;
+ max-width: 550px;
+ background-color: rgba( 0, 0, 0, 0.4 );
+ margin: 0 auto;
+ border-radius: 20px;
+}

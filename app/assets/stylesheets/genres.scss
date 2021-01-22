@@ -1,3 +1,18 @@
 // Place all the styles related to the genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// index
+.new-genre {
+  padding: 30px 50px;
+}
+
+// edit
+.edit-genre {
+ text-align: center;
+ padding: 300px 30px;
+ max-width: 550px;
+ background-color: rgba( 0, 0, 0, 0.4 );
+ margin: 0 auto;
+ border-radius: 20px;
+}

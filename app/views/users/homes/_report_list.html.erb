@@ -1,9 +1,9 @@
-<tr>
-  <td><%= attachment_image_tag report, :image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %></td>
+<tr class="text-white">
+  <td><%= attachment_image_tag report, :image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg" %></td>
   <td><%= report.title %></td>
   <td><%= report.body %></td>
   <% if current_user.is_admin == true %>
-    <td><%= link_to "編集", edit_home_path(report) %></td>
-    <td><%= link_to "削除", home_path(report), method: :delete,  remote: true, data: {confirm: "削除してもよろしいですか？"} %></td>
+    <td><%= link_to "編集", edit_home_path(report), class: "btn btn-outline-success text-success p-2" %></td>
+    <td><%= link_to "削除", home_path(report), method: :delete,  remote: true, data: {confirm: "削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger p-2" %></td>
   <% end %>
 </tr>

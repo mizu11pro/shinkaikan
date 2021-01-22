@@ -43,8 +43,11 @@ class Users::MoviesController < ApplicationController
 
   def update
     @movie = Movie.find(params[:id])
-    @movie.update(movie_params)
-    redirect_to movies_path
+    if @movie.update(movie_params)
+      redirect_to movies_path
+    else
+      render "edit"
+    end
   end
 
   def destroy

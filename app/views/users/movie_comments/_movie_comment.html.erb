@@ -1,29 +1,30 @@
-<div class="new-comment">
-  <% if user_comment.present? %>
-    <h3>感想はお一つまでになります。</h3>
-  <% else %>
-    <%= form_with(model:[movie, movie_comment], remote: true) do |movie_comment| %>
-      <div id="evaluation">
-        <label>評価</label>
-        <%= movie_comment.hidden_field :evaluation, id: :movie_comment_star %>
-      </div>
-      <label>感想</label>
-        <%= movie_comment.text_field :comment, placeholder: "感想入力欄" %>
-        <%= movie_comment.submit "投稿する" %>
-     <% end %>
-  <% end %>
-</div>
-
-<div class="movie-comment">
-    <h4>感想 : <%= movie.movie_comments.count %>件</h4>
-    <% movie.movie_comments.each do |movie_comment| %>
-        <p><%= movie_comment.created_at.strftime('%Y/%m/%d') %></p>
-        <div class="evaluation-list" data-score="<%= movie_comment.evaluation %>"></div>
-        <%= attachment_image_tag movie_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.jpg" %>
-        <%= movie_comment.user.name %>さん
-        <%= movie_comment.comment %>
-        <% if movie_comment.user == current_user %>
-            <%= link_to "削除", movie_movie_comment_path(movie, movie_comment), method: :delete, remote: true, data: {confirm: "削除してもよろしいですか？"} %>
-        <% end %>
+  <div class="new-comment">
+    <% if user_comment.present? %>
+      <h3>感想はお一つまでになります。</h3>
+    <% else %>
+      <%= form_with(model:[movie, movie_comment], remote: true) do |movie_comment| %>
+        <div id="evaluation">
+          <label>評価</label>
+          <%= movie_comment.hidden_field :evaluation, id: :movie_comment_star %>
+        </div>
+        <label>感想</label>
+          <%= movie_comment.text_field :comment, placeholder: "感想入力欄" %>
+          <%= movie_comment.submit "投稿する" %>
+       <% end %>
     <% end %>
-</div>
+  </div>
+
+
+  <div class="movie-comment">
+      <h4>感想 : <%= movie.movie_comments.count %>件</h4>
+      <% movie.movie_comments.each do |movie_comment| %>
+          <p><%= movie_comment.created_at.strftime('%Y/%m/%d') %></p>
+          <div class="evaluation-list" data-score="<%= movie_comment.evaluation %>"></div>
+          <%= attachment_image_tag movie_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.jpg" %>
+          <%= movie_comment.user.name %>さん
+          <%= movie_comment.comment %>
+          <% if movie_comment.user == current_user %>
+              <%= link_to "削除", movie_movie_comment_path(movie, movie_comment), method: :delete, remote: true, data: {confirm: "削除してもよろしいですか？"} %>
+          <% end %>
+      <% end %>
+  </div>

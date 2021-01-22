@@ -2,10 +2,11 @@ class Users::FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    movie_ids = Favorite.where(user_id: params[:user_id]).pluck(:movie_id)
-    @movies = Movie.where(id: movie_ids)
-    @movie = Movie.where(id: movie_ids)
     @reports = Report.all.order(created_at: "DESC").limit(3)
+    @movie_ids = Favorite.where(user_id: params[:user_id]).pluck(:movie_id)
+    @movies = Movie.where(id: @movie_ids)
+    @movie = Movie.where(id: @movie_ids)
+    @favorites = Movie.joins(:favorites).where(favorites: { user_id: params[:id]})
   end
 
   def create
