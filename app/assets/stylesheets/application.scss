@@ -17,6 +17,50 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
- .backimage {
+ * {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+ }
+
+ .font-color {
+  color: white;
+ }
+
+ .back-image {
    background-image: image-url("shinkaikan.jpg");
+   padding-top: 200px;
+   height: 840px;
+   filter: saturate(150%);
+ }
+ .back-image-2{
+  background-image: image-url("back-image-2.jpg");
+ }
+
+
+ .header-image {
+  background-image: image-url("picture_pc_fa63a41226133ef4ce1d5630bf53cac8.jpg.webp");
+   height: 100px;
+ }
+
+ .slideshow {
+  width: 200px;
+  height: 200px;
+ }
+
+  .slide {
+   position: sticky;
+   top: 60px;
+  }
+
+ // 登録画面
+ .login-page {
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 30px;
+  max-width: 450px;
+  background-color: rgba( 0, 0, 0, 0.6 );
+  margin: 0 auto;
+  border-radius: 20px;
  }

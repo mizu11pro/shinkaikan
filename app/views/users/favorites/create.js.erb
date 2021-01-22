@@ -1,1 +1,2 @@
-$(" .favorite-btn").html("<%= j(render 'users/favorites/favorite', movie: @movie )%>");
+$(".favorite-btn").html("<%= j(render 'users/favorites/favorite_button', movie: @movie )%>");
+$("#favorite-btn_<%= @movie.id %>").html("<%= j(render 'users/favorites/favorite_button', movie: @movie )%>");

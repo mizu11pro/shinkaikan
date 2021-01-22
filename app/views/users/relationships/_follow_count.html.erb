@@ -1,7 +1,6 @@
-	<%= link_to followers_path(user_id: user.id) do %>
-		<%= user.followings.count %>follow
+	<%= link_to followers_path(user_id: user.id), class: "btn btn-outline-primary text-white" do %>
+		<%= user.followings.count %>フォロー
 	<% end %>
-	<span>/</span>
-	<%= link_to followings_path(user_id: user.id) do %>
-		<%= user.followers.count %>follower
+	<%= link_to followings_path(user_id: user.id), class: "btn btn-outline-primary text-white" do %>
+		<%= user.followers.count %>フォロワー
 	<% end %>

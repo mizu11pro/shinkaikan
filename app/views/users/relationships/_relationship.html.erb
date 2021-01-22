@@ -1,9 +1,22 @@
-<div class="follow"">
+<div class="follow">
   <% users.each do |user| %>
-    <%= link_to user_path(user) do %>
-    	<%= attachment_image_tag user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %>
-  	<% end %>
-  		name / <%= user.name %>
-  	<div id="relationships_<%= user.id %>"><%= render 'follow_button', user: user %></div>
+    <div class="relationship">
+      <div class="row">
+        <div class="col-sm-4">
+          <%= link_to user_path(user) do %>
+            <%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.jpg", class: "rounded-circle" %>
+          <% end %>
+        </div>
+
+        <div class="col-sm-4">
+          <label>name / <%= user.name %></label>
+        </div>
+
+        <div class="col-sm-4">
+          <label id="relationships_<%= user.id %>"><%= render 'follow_button', user: user %></label>
+        </div>
+
+      </div>
+    </div>
   <% end %>
 </div>

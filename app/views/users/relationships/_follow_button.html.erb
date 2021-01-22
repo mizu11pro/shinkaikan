@@ -1,5 +1,5 @@
 <% if current_user.following?(user) %>
-		<%= link_to "フォロー中", relationships_path(user_id: user.id), method: :delete, remote: true, class: 'fas fa-user-times' %>
+		<%= link_to "フォロー中", relationships_path(user_id: user.id), method: :delete, remote: true, class: 'fas fa-user-check btn btn-outline-success text-success' %>
 <% else %>
-		<%= link_to "フォロー", relationships_path(user_id: user.id), method: :post, remote: true, class: 'fas fa-user-check' %>
+		<%= link_to "フォロー", relationships_path(user_id: user.id), method: :post, remote: true, class: 'fas fa-user btn btn-outline-success text-success' %>
 <% end %>

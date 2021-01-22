@@ -1,0 +1,13 @@
+<% if movie.favorited_by?(current_user) %>
+    <p>
+        <%= link_to movie_favorites_path(movie), method: :delete, remote: true, class: "btn btn-outline-warning text-warning" do %>
+            ❤<%= movie.favorites.count %>
+        <% end %>
+    </p>
+<% else %>
+    <p>
+        <%= link_to movie_favorites_path(movie), method: :post, remote: true, class: "btn btn-outline-warning text-warning" do %>
+            ♡<%= movie.favorites.count %>
+        <% end %>
+    </p>
+<% end %>

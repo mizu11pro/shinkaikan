@@ -1,8 +1,15 @@
-          <%= link_to movie_path(movie) do %>
-            <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
-          <% end %>
-          <%= movie.title %>
-          <%= movie.body %>
-          <%= movie.genre.name %>
+<div id="movie_favorite_<%= movie.id %>">
+  <div class="card-body">
+    <i class="fas fa-star"></i><%= movie.movie_comments.average(:evaluation).round(1) %>
+    <label id="favorite-btn_<%= movie.id %>"><%= render 'favorite_button', movie: movie %></label>
+    <%= link_to movie_path(movie) do %>
+      <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
+    <% end %>
+    <h5><%= movie.title %></h5>
+    <label><%= movie.directed_by %></label>
+    <span> / </span>
+    <label><%= movie.genre.name %></label>
+    <div><%= movie.body.truncate(25) %></div>
+  </div>
+</div>
 
-          <div class="favorite-btn"><%= render 'favorite', movie: movie %></div>

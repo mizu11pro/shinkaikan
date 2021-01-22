@@ -5,15 +5,19 @@ class Users::MovieCommentsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @movie_comment = current_user.movie_comments.new(movie_comment_params)
     @movie_comment.movie_id = @movie.id
-    @movie_comment.save
     @user_comment = @movie.movie_comments.where(user_id: current_user.id)
+    unless @movie_comment.save
+      render 'error'
+    end
   end
 
   def destroy
     @movie = Movie.find(params[:movie_id])
     @movie_comment = @movie.movie_comments.find(params[:id])
-    @movie_comment.destroy
     @user_comment = @movie.movie_comments.where(user_id: current_user.id)
+    if @movie_comment.destroy
+      redirect_to @movie
+    end
   end
 
   private

@@ -4,12 +4,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
 
-  validates :name, presence: true, uniqueness: true, length: {minimum: 2, maximum: 10 }
+  with_options presence: true do
+  validates :name, uniqueness: true, length: {minimum: 2, maximum: 10 }
+  validates :email
+  end
   validates :introduction, length: {maximum: 100 }
 
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-# DM機能
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :room, through: :entry

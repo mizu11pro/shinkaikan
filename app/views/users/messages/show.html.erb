@@ -2,12 +2,6 @@
   <h4><%= @user.name %> さんとのチャット</h4>
 
   <table>
-    <thead>
-      <tr>
-        <th><%= @user.name %>さん</th>
-        <th>あなた</th>
-      </tr>
-    </thead>
     <tbody>
     <% @messages.each do |message| %>
       <%= render 'message', message: message %>

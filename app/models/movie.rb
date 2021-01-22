@@ -2,6 +2,13 @@ class Movie < ApplicationRecord
 
   attachment :image
 
+  with_options presence: true do
+    validates :title
+    validates :body
+    validates :directed_by
+    validates :image_id
+    validates :genre_id
+  end
   validates :is_movie, inclusion: { in: [true, false] }
 
   has_many :movie_comments, dependent: :destroy

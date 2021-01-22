@@ -1,16 +1,30 @@
-<div class="movie" id="movie_<%= @movie.id %>">
-    <%= attachment_image_tag @movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.jpg" %>
-    <%= @movie.title %>
-    <%= @movie.directed_by %>
-    <%= @movie.genre.name %>
-    <%= @movie.body %>
-    <div class="evaluation-list" data-score="<%= @movie.movie_comments.average(:evaluation) %>"></div>
+<!--<div class="back-image-2">-->
+    <div class="col-sm-12">
 
-    <div class="favorite-btn">
-        <%= render 'users/favorites/favorite', movie: @movie %>
+        <div class="movie" id="movie_<%= @movie.id %>">
+            <div class="row movie-show clearfix">
+                <div class="col-sm-4 offset-2">
+                    <%= attachment_image_tag @movie, :image, size: "250x300", format: 'jpeg', fallback: "no_image.jpg" %>
+                </div>
+                <div class="col-sm-6">
+                    <div class="evaluation-list" data-score="<%= @movie.movie_comments.average(:evaluation) %>"></div>
+                    <p>作品名 / <%= @movie.title %></p>
+                    <p>監督 / <%= @movie.directed_by %></p>
+                    <p>ジャンル / <%= @movie.genre.name %></p>
+                    <div class="favorite-btn">
+                        <%= render 'users/favorites/favorite_button', movie: @movie %>
+                    </div>
+                </div>
+                <p><%= @movie.body %></p>
+            </div>
+        </div>
+
+        <div class="comment">
+            <div id="comments_error">
+                <%= render 'layouts/errors', model: @movie_comment %>
+            </div>
+            <%= render 'users/movie_comments/movie_comment', movie: @movie, movie_comment: @movie_comment, user_comment: @user_comment %>
+        </div>
+
     </div>
-</div>
-
-<div class="comment">
-    <%= render 'users/movie_comments/movie_comment', movie: @movie, movie_comment: @movie_comment, user_comment: @user_comment %>
 </div>

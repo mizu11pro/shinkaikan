@@ -1,14 +1,25 @@
 <% if user_signed_in? %>
+  <div class="back-image-2 font-color">
+    <div class="col-sm-12">
+      <% if  current_user.is_admin? != true %>
+        <div class="slideshow">
+          <img src="/assets/img1.jpg">
+          <img src="/assets/img2.jpg">
+          <img src="/assets/img3.png">
+          <img src="/assets/img4.png.webp">
+          <img src="/assets/img5.jpg">
+        </div>
 
-    <% if  current_user.is_admin? != true %>
-    <!--customer-->
-    <div class="backimage">
-      <h4>新海館とは..</h4>
+        <%= javascript_include_tag 'jquery.min.js' %>
+        <%= javascript_include_tag 'skippr.min.js' %>
+        <%= javascript_include_tag 'script.js' %>
+
+        <h4>新海館とは..</h4>
+      <% else %>
+          <div class="report_list mt-3">
+            <%= render 'admin_index', report: @report, reports: @reports %>
+          </div>
+      <% end %>
     </div>
-
-    <% else %>
-    <!--admin-->
-      <div class="report_list"><%= render 'admin_index', report: @report, reports: @reports %></div>
-    <% end %>
-
+  </div>
 <% end %>

@@ -1,13 +1,25 @@
-<div class="favorite-btn">
-  <% if @movies.exists? %>
-        <% @movies.each do |movie| %>
-          <%= render 'favorite_index', movie: movie %>
-        <% end %>
-  <% else %>
-        <div class="dont-like">現在いいねしている映画はございません</div>
-  <% end %>
-</div>
+<div class="col-sm-12">
+  <div class="back-image-2">
 
-<div class="report">
-  <%= render 'users/homes/customer.index', reports: @reports %>
+    <div class="row">
+      <div class="col-sm-10">
+        <% if @movies.exists? %>
+              <% @movies.each do |movie| %>
+                <div class="row">
+                  <div class="card text-center col-sm-3">
+                    <%= render 'favorite_index', movie: movie %>
+                  </div>
+                </div>
+              <% end %>
+        <% else %>
+              <div class="no-favo font-color">現在いいねしている映画はございません</div>
+        <% end %>
+      </div>
+
+      <div class="side-menu col-sm-2">
+        <div class="slide"><%= render 'users/homes/customer_index', reports: @reports %></div>
+      </div>
+    </div>
+
+  </div>
 </div>
