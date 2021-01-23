@@ -2,11 +2,11 @@
   <div class="new-report col-sm-3">
       <h3>お知らせ投稿</h3>
       <%= form_with model: report, url: homes_path, remote: true do |report| %>
-        <h3>画像</h3>
+        <h3 class="mt">画像</h3>
         <%= report.attachment_field :image %>
-        <h3>お題</h3>
+        <h3 class="mt">お題</h3>
         <%= report.text_field :title %>
-        <h3>内容</h3>
+        <h3 class="mt">内容</h3>
         <%= report.text_area :body %>
         <%= report.submit '投稿する', class: "btn btn-outline-info text-white p-2" %>
       <% end %>
@@ -14,7 +14,7 @@
 
   <div class="report col-sm-9">
     <h3>お知らせ</h3>
-    <table class="table">
+    <table class="table mt">
       <tbody>
         <% reports.each do |report| %>
           <%= render 'report_list', report: report %>

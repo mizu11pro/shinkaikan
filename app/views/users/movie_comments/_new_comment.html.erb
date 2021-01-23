@@ -4,10 +4,10 @@
     <%= form_with(model:[movie, movie_comment], remote: true) do |movie_comment| %>
       <div id="evaluation">
         <label>評価</label>
-        <%= movie_comment.hidden_field :evaluation, id: :movie_comment_star %>
+        <label><%= movie_comment.hidden_field :evaluation, id: :movie_comment_star %></label>
       </div>
       <label>感想</label>
-        <%= movie_comment.text_field :comment, placeholder: "感想入力欄" %>
-        <%= movie_comment.submit "投稿する" %>
+      <label><%= movie_comment.text_field :comment, placeholder: "感想入力欄" %></label>
+      <label><%= movie_comment.submit "投稿する", class: "btn btn-outline-success text-success" %></label>
      <% end %>
   <% end %>

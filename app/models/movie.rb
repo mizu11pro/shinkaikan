@@ -6,7 +6,7 @@ class Movie < ApplicationRecord
     validates :title
     validates :body
     validates :directed_by
-    validates :image_id
+    validates :image
     validates :genre_id
   end
   validates :is_movie, inclusion: { in: [true, false] }

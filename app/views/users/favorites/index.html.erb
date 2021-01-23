@@ -1,16 +1,13 @@
-<div class="col-sm-12">
-  <div class="back-image-2">
+<div class="col-sm-12 back-image-2">
 
     <div class="row">
-      <div class="col-sm-10">
+      <div class="col-sm-10 favorite-list">
         <% if @movies.exists? %>
-              <% @movies.each do |movie| %>
-                <div class="row">
-                  <div class="card text-center col-sm-3">
-                    <%= render 'favorite_index', movie: movie %>
-                  </div>
-                </div>
-              <% end %>
+            <div class="row">
+            <% @movies.each do |movie| %>
+                <%= render 'favorite_index', movie: movie, user: @user %>
+            <% end %>
+            </div>
         <% else %>
               <div class="no-favo font-color">現在いいねしている映画はございません</div>
         <% end %>
@@ -21,5 +18,4 @@
       </div>
     </div>
 
-  </div>
 </div>

@@ -1,30 +1,22 @@
-<!--<div class="back-image-2">-->
-    <div class="col-sm-12">
+<div class="col-sm-12 back-image-2 font-color">
 
-        <div class="movie" id="movie_<%= @movie.id %>">
-            <div class="row movie-show clearfix">
-                <div class="col-sm-4 offset-2">
-                    <%= attachment_image_tag @movie, :image, size: "250x300", format: 'jpeg', fallback: "no_image.jpg" %>
-                </div>
-                <div class="col-sm-6">
-                    <div class="evaluation-list" data-score="<%= @movie.movie_comments.average(:evaluation) %>"></div>
-                    <p>作品名 / <%= @movie.title %></p>
-                    <p>監督 / <%= @movie.directed_by %></p>
-                    <p>ジャンル / <%= @movie.genre.name %></p>
-                    <div class="favorite-btn">
-                        <%= render 'users/favorites/favorite_button', movie: @movie %>
-                    </div>
-                </div>
-                <p><%= @movie.body %></p>
-            </div>
+    <div class="row show-movie" id="movie_<%= @movie.id %>">
+        <div class="col-sm-4">
+            <%= attachment_image_tag @movie, :image, size: "400x400", format: 'jpeg', fallback: "no_image.png" %>
         </div>
-
-        <div class="comment">
-            <div id="comments_error">
-                <%= render 'layouts/errors', model: @movie_comment %>
+        <div class="col-sm-8">
+            <h5 class="movie-show">ジャンル / <%= @movie.genre.name %></h5>
+            <div class="evaluation-list" data-score="<%= @movie.movie_comments.average(:evaluation) %>"></div>
+            <h5 class="movie-show"><%= @movie.title %><span> / </span><%= @movie.directed_by %> 監督</h5>
+            <div class="favorite-btn">
+                <%= render 'users/favorites/favorite_button', movie: @movie %>
             </div>
-            <%= render 'users/movie_comments/movie_comment', movie: @movie, movie_comment: @movie_comment, user_comment: @user_comment %>
+            <h6 class="movie-show"><%= @movie.body %></h6>
         </div>
-
     </div>
+
+    <div class="comment">
+        <%= render 'users/movie_comments/movie_comment', movie: @movie, movie_comment: @movie_comment, user_comment: @user_comment %>
+    </div>
+
 </div>

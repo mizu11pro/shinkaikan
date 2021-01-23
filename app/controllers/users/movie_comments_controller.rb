@@ -15,9 +15,9 @@ class Users::MovieCommentsController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @movie_comment = @movie.movie_comments.find(params[:id])
     @user_comment = @movie.movie_comments.where(user_id: current_user.id)
-    if @movie_comment.destroy
-      redirect_to @movie
-    end
+    @movie_comment.destroy
+      # redirect_to @movie
+    # end
   end
 
   private

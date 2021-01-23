@@ -10,4 +10,59 @@
 .background {
   padding-top: 30px;
   background-color: rgba( 50, 50, 50, 0.3 );
+  min-height: 1200px;
+}
+
+.introduction {
+ background-color: rgba( 999, 999, 999, 0.05 );
+ height: 150px;
+ font-weight: bold;
+ border-radius: 20px;
+ padding-top: 10px;
+}
+
+// edit
+.edit-user {
+ text-align: center;
+ font-weight: bold;
+ padding: 100px 30px;
+ max-width: 550px;
+ background-color: rgba( 0, 0, 0, 0.2 );
+ margin: 0 auto;
+ border-radius: 20px;
+}
+
+.edit-space {
+  padding-top: 30px;
+}
+
+// index
+.user-list {
+  text-align: center;
+}
+
+.index-user {
+  padding: 30px;
+  background-color: rgba( 0, 0, 0, 0.1 );
+  border-radius: 40px;
+}
+
+.index-user-name {
+  padding: 10px 0;
+}
+
+.user-follow-count {
+  padding: 20px;
+}
+
+// search
+.search-text {
+  text-align: center;
+  padding: 30px;
+}
+
+.search-user {
+  text-align: center;
+  background-color: rgba( 0, 0, 0, 0.1 );
+  border-radius: 30px;
 }
