@@ -12,16 +12,16 @@
  }
 
 // show
-.movie-show {
+.show-movie {
  text-align: center;
+  background-color: rgba( 999, 999, 999, 0.1 );
+  height: 400px;
+  font-weight: bold;
+  border-radius: 20px;
 }
 
-.introduction {
- background-color: rgba( 999, 999, 999, 0.5 );
- height: 150px;
- font-weight: bold;
- color: black;
- border-radius: 20px;
+.movie-show {
+ padding-top:30px;
 }
 
 // edit
@@ -32,4 +32,24 @@
  background-color: rgba( 0, 0, 0, 0.4 );
  margin: 0 auto;
  border-radius: 20px;
+}
+
+// search
+.search-movie {
+ background-color: rgba( 0, 0, 0, 0.15 );
+ border-radius: 20px;
+}
+
+// new
+.new-movie {
+ text-align: center;
+ padding: 150px 30px;
+ max-width: 550px;
+ background-color: rgba( 0, 0, 0, 0.4 );
+ margin: 0 auto;
+ border-radius: 20px;
+}
+
+[new="movie[body]"]{
+
 }

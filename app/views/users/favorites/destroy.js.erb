@@ -9,9 +9,9 @@ if (user_id != current_user_id) {
   $("#favorite-btn_<%= @movie.id %>").html("<%= j(render 'users/favorites/favorite_button', movie: @movie )%>");
 }
 else{
-  $("#favorite-btn_<%= @movie.id %>").html("");
-  $("#movie_favorite_<%= @movie.id %>").html("");
+  $("#movie_favorite_<%= @movie.id %>").hide()
+
   <% if current_user.favorites.count == 0 %>
-    $("#favorite-btn_<%= @movie.id %>").html("現在いいねしている映画はございません");
+    $(".favorite-list").html("<div class='no-favo font-color'>現在いいねしている映画はございません</div>");
   <% end %>
 }

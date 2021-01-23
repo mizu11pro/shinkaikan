@@ -2,22 +2,39 @@
 	<div class="row">
 
 		<div class="col-sm-3 background">
-			<div class="my-page text-center slide mt-3">
+			<div class="my-page text-center slide mt">
 				<%= render 'mypage', user: @user %>
 			</div>
 		</div>
 
 		<div class="col-sm-9">
 			<div class="user-list">
-			  <% @users.each do |user| %>
-						<%= link_to user_path(user) do %>
-							<%= attachment_image_tag user, :profile_image, size: "200x200", format: 'jpeg', fallback: "017c44c97a38c1c4999681e28c39271d.png", class: "rounded-circle" %>
-						<% end %>
-						<%= user.name %><span id="relationships_<%= user.id %>"><%= render 'users/relationships/follow_button', user: user %></span>
-						<span id="follow_count_<%= user.id %>"><%= render 'users/relationships/follow_count', user: user %></span>
-						<%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-hand-holding-heart btn btn-outline-primary text-white' %>
-						<%= link_to "DMをする", message_path(user.id), class: 'fas fa-comments btn btn-outline-success text-white' %>
-			  <% end %>
+				<div class="row">
+				  <% @users.each do |user| %>
+				  	<div class="col-sm-4 index-user">
+				  		<div class="row">
+					  		<div class="col-sm-4 offset-1">
+									<%= link_to user_path(user) do %>
+										<%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.png", class: "rounded-circle" %>
+									<% end %>
+					  		</div>
+					  		<div class="col-sm-6">
+									<div class="index-user-name"><%= user.name %> さん</div>
+									<% if user != current_user %>
+										<div class="mt">
+											<span id="relationships_<%= user.id %>"><%= render 'users/relationships/follow_button', user: user %></span>
+										</div>
+									<% end %>
+					  		</div>
+				  		</div>
+				  		<div class="user-follow-count">
+								<span id="follow_count_<%= user.id %>"><%= render 'users/relationships/follow_count', user: user %></span>
+				  		</div>
+								<label><%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-hand-holding-heart btn btn-outline-primary text-white' %></label>
+								<label><%= link_to "DMをする", message_path(user.id), class: 'fas fa-comments btn btn-outline-success text-white' %></label>
+				  	</div>
+				  <% end %>
+				</div>
 			</div>
 		</div>
 

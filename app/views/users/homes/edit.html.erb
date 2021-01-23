@@ -1,15 +1,13 @@
-<div class="col-sm-12 font-color">
-    <div class="back-image-2">
-        <div class="edit-report">
-            <%= form_with model: @report, url: home_path, local: true do |report| %>
-                <h3>画像</h3>
-                <%= report.attachment_field :image %>
-                <h3>お題</h3>
-                <%= report.text_field :title %>
-                <h3>内容</h3>
-                <div><%= report.text_area :body %></div>
-                <div><%= report.submit '編集完了', class: "btn btn-outline-success text-white" %></div>
-            <% end %>
-        </div>
+<div class="col-sm-12 back-image-2 font-color">
+    <div class="edit-report">
+        <%= form_with model: @report, url: home_path, local: true do |report| %>
+            <h3>画像</h3>
+            <%= report.attachment_field :image %>
+            <h3 class="mt">お題</h3>
+            <%= report.text_field :title %>
+            <h3 class="mt">内容</h3>
+            <div><%= report.text_area :body %></div>
+            <div class="mt"><%= report.submit '編集完了', class: "btn btn-outline-success text-white" %></div>
+        <% end %>
     </div>
 </div>

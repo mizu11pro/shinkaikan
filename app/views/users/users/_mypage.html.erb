@@ -1,16 +1,27 @@
-<div class="search text-center">
+<div class="search-text">
 	<%= render 'user_serch' %>
 </div>
+
 <%= link_to user_path(user) do %>
-  	<%= attachment_image_tag user, :profile_image, size: "200x200", format: 'jpeg', fallback: "017c44c97a38c1c4999681e28c39271d.png", class: "rounded-circle" %>
+  	<%= attachment_image_tag user, :profile_image, size: "200x200", format: 'jpeg', fallback: "no_image.png", class: "rounded-circle" %>
 <% end %>
-<h5 class="mt-3"><%= user.name %> さん</h5>
+
+<h5 class="mt"><%= user.name %> さん</h5>
 <p id="follow_count_<%= user.id %>"><%= render 'users/relationships/follow_count', user: user %></p>
 <div><%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-hand-holding-heart btn btn-outline-primary text-white' %></div>
+
 <% if user == current_user %>
-	<%= link_to "設定", edit_user_path(user), class: 'fas fa-cogs btn btn-outline-success text-white' %>
+	<div class="index-user-button mt">
+		<%= link_to "設定", edit_user_path(user), class: 'fas fa-cogs btn btn-outline-success text-white' %>
+	</div>
 <% else %>
-	<div id="relationships_<%= @user.id %>" class="mt-3"><%= render 'users/relationships/follow_button', user: @user %></div>
-	<div class="mt-3"><%= link_to "DMをする", message_path(@user.id), class: 'fas fa-comments btn btn-outline-success text-white' %></div>
+	<div>
+		<label id="relationships_<%= @user.id %>" class="mt"><%= render 'users/relationships/follow_button', user: @user %></label>
+		<label class="mt"><%= link_to "DMをする", message_path(@user.id), class: 'fas fa-comments btn btn-outline-success text-white' %></label>
+	</div>
 <% end %>
-<h6 class="introduction">自己紹介 / <%= user.introduction %></h6>
+
+<div class="introduction font-color mt">
+	<h6>/ 自己紹介 \</h6>
+	<label><%= user.introduction %></label>
+</div>

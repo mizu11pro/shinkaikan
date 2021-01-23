@@ -1,8 +1,5 @@
-<h4 class="col-sm-12 text-white mt-3">
-  映画全<%= @movies.count %>件
-  <% if current_user.is_admin? == true %>
-    <%= link_to "新規映画作成", new_movie_path, class: "btn btn-outline-success text-white" %>
-  <% end %>
+<h4 class="col-sm-12 text-white mt">
+  <label>映画全<%= @movies.count %>件</label>
 </h4>
 
 <%= render 'movie', movies: movies %>

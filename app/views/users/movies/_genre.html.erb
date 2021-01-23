@@ -1,5 +1,8 @@
-<div class="font-color">
-  <h6>ジャンル検索</h6>
+<div class="font-color mt">
+  <% if current_user.is_admin? == true %>
+    <%= link_to "新規映画作成", new_movie_path, class: "btn btn-outline-success text-success" %>
+  <% end %>
+  <h5 class="mt">ジャンル検索</h5>
   <h6><%= link_to "全作品", movies_path, class: "text-white" %></h6>
     <% genres.each do |genre| %>
       <%= link_to movies_path(genre_id: genre.id), class: "text-white" do %>

@@ -1,30 +1,35 @@
-  <div class="new-comment">
-    <% if user_comment.present? %>
-      <h3>感想はお一つまでになります。</h3>
-    <% else %>
-      <%= form_with(model:[movie, movie_comment], remote: true) do |movie_comment| %>
-        <div id="evaluation">
+<div class="row comment">
+  <div class="new-comment col-sm-5 offset-1">
+      <div id="comments_error">
+        <%= render 'layouts/errors', model: @movie_comment %>
+      </div>
+      <% if user_comment.present? %>
+        <h3>感想はお一つまでになります。</h3>
+      <% else %>
+        <%= form_with(model:[movie, movie_comment], remote: true) do |movie_comment| %>
+          <h6>(視聴した感想や意見を他のユーザ様と共有しよう)</h6>
+          <div id="evaluation">
           <label>評価</label>
-          <%= movie_comment.hidden_field :evaluation, id: :movie_comment_star %>
-        </div>
-        <label>感想</label>
-          <%= movie_comment.text_field :comment, placeholder: "感想入力欄" %>
-          <%= movie_comment.submit "投稿する" %>
-       <% end %>
-    <% end %>
+            <%= movie_comment.hidden_field :evaluation, id: :movie_comment_star %>
+          </div>
+          <label>感想</label>
+            <%= movie_comment.text_field :comment, placeholder: "感想入力欄" %>
+            <%= movie_comment.submit "投稿する", class: "btn btn-outline-info text-white" %>
+         <% end %>
+      <% end %>
   </div>
 
-
-  <div class="movie-comment">
+  <div class="movie-comment col-sm-6">
       <h4>感想 : <%= movie.movie_comments.count %>件</h4>
       <% movie.movie_comments.each do |movie_comment| %>
-          <p><%= movie_comment.created_at.strftime('%Y/%m/%d') %></p>
+          <div><%= movie_comment.created_at.strftime('%Y/%m/%d') %></div>
           <div class="evaluation-list" data-score="<%= movie_comment.evaluation %>"></div>
-          <%= attachment_image_tag movie_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.jpg" %>
+          <%= attachment_image_tag movie_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.png" %>
           <%= movie_comment.user.name %>さん
           <%= movie_comment.comment %>
           <% if movie_comment.user == current_user %>
-              <%= link_to "削除", movie_movie_comment_path(movie, movie_comment), method: :delete, remote: true, data: {confirm: "削除してもよろしいですか？"} %>
+              <%= link_to "削除", movie_movie_comment_path(movie, movie_comment), method: :delete, remote: true, data: {confirm: "削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger" %>
           <% end %>
       <% end %>
   </div>
+</div>

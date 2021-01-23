@@ -5,34 +5,34 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-         <% if user_signed_in? %>
-                <ul class="nav pt-3">
-                  <li>
-                    <%= link_to  'javascript:history.back()' do %>
-              	      <i class="fas fa-arrow-alt-circle-left btn btn-outline-info text-white p-2">Back</i>
-                    <% end %>
-                  </li>
-                  <li class="nav-search mx-auto">
-                    <%= form_with url: search_movies_path, method: :get, local: true do |search| %>
-                      <%= search.text_field :search, placeholder: "映画タイトル入力欄", class: "p-2" %>
-                      <%= search.submit "検索", class: "btn btn-outline-info text-white p-2" %>
-                    <% end %>
-                  </li>
-              <% if current_user.is_admin? %>
-                  <li class="nav-item"><%= link_to "Top", root_path, class: 'fab fa-buffer btn-outline-primary btn btn-outline-info p-3 mr-2 text-white' %></li>
-                  <li class="nav-item"><%= link_to "Genre", genres_path, class: 'fas fa-file-signature btn btn-outline-info p-3 mr-2 text-white' %></li>
-                  <li class="nav-item"><%= link_to "Movie",movies_path, class: 'fas fa-film btn btn-outline-info p-3 mr-2 text-white' %></li>
-                  <li class="nav-item"><%= link_to "User", users_path, class: 'fas fa-users btn btn-outline-info p-3 mr-2 text-white' %></li>
-              <% else %>
-                  <li class="nav-item"><%= link_to "Top", root_path, class: 'fab fa-buffer btn btn-outline-info p-3 mr-2 text-white' %></li>
-                  <li class="nav-item"><%= link_to "movie", movies_path, class: 'fas fa-video btn btn-outline-info p-3 mr-2 text-white' %></li>
-                  <li class="nav-item"><%= link_to "User", users_path, class: 'fas fa-users btn btn-outline-info p-3 mr-2 text-white' %></li>
-                  <li class="nav-item"><%= link_to "DM", user_path(current_user), class: 'far fa-comment-dots btn btn-outline-info p-3 mr-2 text-white' %></li>
-                </span>
+        <% if user_signed_in? %>
+          <ul class="nav pt-3">
+            <li>
+              <%= link_to  'javascript:history.back()' do %>
+        	      <i class="fas fa-arrow-alt-circle-left btn btn-outline-info text-white p-2">Back</i>
               <% end %>
-                  <li class="nav-item"><%= link_to "logout", destroy_user_session_path, method: :delete, class: 'fas fa-outdent btn btn-outline-info p-3 text-white' %></li>
-                </ul>
-          <% end %>
+            </li>
+            <li class="nav-search mx-auto">
+              <%= form_with url: search_movies_path, method: :get, local: true do |search| %>
+                <%= search.text_field :search, placeholder: "映画タイトル入力欄", class: "p-2" %>
+                <%= search.submit "検索", class: "btn btn-outline-info text-white p-2" %>
+              <% end %>
+            </li>
+            <% if current_user.is_admin? %>
+                <li class="nav-item"><%= link_to "Top", root_path, class: 'fab fa-buffer btn-outline-primary btn btn-outline-info p-3 mr-2 text-white' %></li>
+                <li class="nav-item"><%= link_to "Genre", genres_path, class: 'fas fa-file-signature btn btn-outline-info p-3 mr-2 text-white' %></li>
+                <li class="nav-item"><%= link_to "Movie",movies_path, class: 'fas fa-film btn btn-outline-info p-3 mr-2 text-white' %></li>
+                <li class="nav-item"><%= link_to "User", users_path, class: 'fas fa-users btn btn-outline-info p-3 mr-2 text-white' %></li>
+            <% else %>
+                <li class="nav-item"><%= link_to "Top", root_path, class: 'fab fa-buffer btn btn-outline-info p-3 mr-2 text-white' %></li>
+                <li class="nav-item"><%= link_to "Movie", movies_path, class: 'fas fa-video btn btn-outline-info p-3 mr-2 text-white' %></li>
+                <li class="nav-item"><%= link_to "User", users_path, class: 'fas fa-users btn btn-outline-info p-3 mr-2 text-white' %></li>
+                <li class="nav-item"><%= link_to "DM", user_path(current_user), class: 'far fa-comment-dots btn btn-outline-info p-3 mr-2 text-white' %></li>
+              </span>
+            <% end %>
+            <li class="nav-item"><%= link_to "logout", destroy_user_session_path, method: :delete, class: 'fas fa-outdent btn btn-outline-info p-3 text-white' %></li>
+          </ul>
+        <% end %>
       </header>
     </div>
   </nav>
