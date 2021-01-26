@@ -1,0 +1,31 @@
+
+[1mFrom:[0m /home/ec2-user/environment/shinnkaikan/app/controllers/users/users_controller.rb:22 Users::UsersController#show:
+
+    [1;34m17[0m:   [32mdef[0m [1;34mshow[0m
+    [1;34m18[0m:     @reports = [1;34;4mReport[0m.all.order([35mcreated_at[0m: [31m[1;31m"[0m[31mDESC[1;31m"[0m[31m[0m).limit([1;34m3[0m)
+    [1;34m19[0m:     @user = [1;34;4mUser[0m.find(params[[33m:id[0m])
+    [1;34m20[0m:     @favorites = @user.favorites.where([35mmovie_id[0m: params[[33m:movie_id[0m])
+    [1;34m21[0m:     @rank_movies = [1;34;4mMovie[0m.joins([33m:movie_comments[0m).where([35mmovie_comments[0m: { [35muser_id[0m: params[[33m:id[0m]}).order([35mevaluation[0m: [33m:desc[0m).limit([1;34m3[0m)
+ => [1;34m22[0m:     binding.pry
+    [1;34m23[0m:     [32munless[0m @user.is_admin == [1;36mtrue[0m
+    [1;34m24[0m:       redirect_to request.referer, [35mnotice[0m: [31m[1;31m'[0m[31m管理者しか入れません。[1;31m'[0m[31m[0m
+    [1;34m25[0m:     [32mend[0m
+    [1;34m26[0m:     [1;34m# movieがmovie＿commentだけを持っているmovieを取得[0m
+    [1;34m27[0m:     [1;34m# それに対してmovie_commentのuser_idの条件を指定[0m
+    [1;34m28[0m: 
+    [1;34m29[0m:   [1;34m# @rank_movies = [][0m
+    [1;34m30[0m:   [1;34m#  @rank_movies_tmp.each.with_index(1) do |movie, i|[0m
+    [1;34m31[0m: 	[1;34m#   @movie_comments.each.with_index(1) do |movie_comment, j|[0m
+    [1;34m32[0m:   [1;34m# 		  if movie.id == movie_comment.movie_id[0m
+    [1;34m33[0m:   [1;34m# 		    @rank_movies << movie[0m
+    [1;34m34[0m:   [1;34m# 		  end[0m
+    [1;34m35[0m: 	[1;34m#   end[0m
+    [1;34m36[0m: 	[1;34m# end[0m
+    [1;34m37[0m:     @currentEntries = current_user.entries
+    [1;34m38[0m:     myRoomIds = []
+    [1;34m39[0m:       @currentEntries.each [32mdo[0m | entry |
+    [1;34m40[0m:         myRoomIds << entry.room.id
+    [1;34m41[0m:       [32mend[0m
+    [1;34m42[0m:     @anotherEntries = [1;34;4mEntry[0m.where([35mroom_id[0m: myRoomIds).where([31m[1;31m'[0m[31muser_id != ?[1;31m'[0m[31m[0m, @user.id)
+    [1;34m43[0m:   [32mend[0m
+

@@ -1,8 +1,8 @@
-<div class="col-sm-12 back-image-2">
+<div class="back-image-2">
 
     <div class="row">
-      <div class="col-sm-10 favorite-list">
-        <% if @movies.exists? %>
+      <div class="col-lg-10 col-md-12 favorite-list">
+        <% if @movies.present? %>
             <div class="row">
             <% @movies.each do |movie| %>
                 <%= render 'favorite_index', movie: movie, user: @user %>
@@ -13,7 +13,7 @@
         <% end %>
       </div>
 
-      <div class="side-menu col-sm-2">
+      <div class="side-menu col-lg-2 col-md-12">
         <div class="slide"><%= render 'users/homes/customer_index', reports: @reports %></div>
       </div>
     </div>

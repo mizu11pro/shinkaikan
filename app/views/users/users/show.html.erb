@@ -1,47 +1,46 @@
 <div class="back-image-2">
 	<div class="row">
 
-		<div class="col-sm-3 background font-color">
-			<div class="my-page text-center slide mt-3">
+		<div class="col-lg-3 col-md-4 background font-color">
+			<div class="my-page text-center slide mt">
 				<%= render 'mypage', user: @user %>
 			</div>
 		</div>
 
-		<div class="col-sm-7">
+		<div class="col-lg-7 col-md-8 show-user-contents">
+			<div class="search-text">
+				<%= render 'user_serch' %>
+			</div>
 			<div class="user_ranking">
-				<h4 class="text-white m-3">~評価ランキング~</h4>
-				<div class="row">
-					<%= render 'users/movies/movie_ranking', rank_movie: @rank_movies %>
-				</div>
+				<h4 class="font-color mt">~評価ランキング~</h4>
+				<%= render 'users/movies/movie_ranking', rank_movie: @rank_movies %>
 			</div>
 			<% if @user == current_user %>
-				<div class="message-list font-color">
-					<h5 class="m-3">~DM履歴~</h5>
+				<div class="message-dm font-color mt">
+					<h4 class="mt dm-title">~DM履歴~</h4>
 					<% @anotherEntries.each do |entry| %>
-						<div class="row">
-								<div class="col-sm-3">
-									<%= link_to user_path(entry.user) do %>
-										<%= attachment_image_tag entry.user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.png", class: "rounded-circle" %>
+						<div class="row mt">
+							<div class="offset-1 col-sm-4 col-xs-3">
+								<h6><%= entry.user.name %> さん</h6>
+								<%= link_to user_path(entry.user) do %>
+									<%= attachment_image_tag entry.user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.png", class: "rounded-circle" %>
+								<% end %>
+							</div>
+							<div class="col-sm-6 col-xs-9">
+								<div class="mt"><%= link_to "DMをする", message_path(entry.user.id), class: 'fas fa-comments btn btn-outline-success text-white' %></div>
+								<div class="last-message mt">
+									<% if entry.room.message_ids.last.present? %>
+										<%= Message.find_by(id: entry.room.message_ids.last).message.truncate(13) %>
 									<% end %>
 								</div>
-								<div class="col-sm-6">
-									<%= entry.user.name %> さん
-									<span class="last-message">
-										<% if entry.room.message_ids.last.present? %>
-											<%= Message.find_by(id: entry.room.message_ids.last).message.truncate(20) %>
-										<% end %>
-									</span>
-								</div>
-								<div class="col-sm-3">
-									<%= link_to "DMをする", message_path(entry.user.id), class: 'fas fa-comments btn btn-outline-success text-white' %>
-								</div>
+							</div>
 						</div>
 					<% end %>
 				</div>
 			<% end %>
 		</div>
 
-		<div class="side-menu col-sm-2 font-color">
+		<div class="side-menu col-lg-2 col-md-12 font-color">
 			<div class="slide"><%= render 'users/homes/customer_index', reports: @reports %></div>
 		</div>
 

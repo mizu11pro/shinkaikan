@@ -1,24 +1,23 @@
 <div class="back-image-2">
   <div class="row">
-    <div class="side-menu col-md-2">
+    <div class="side-menu col-lg-2 col-md-3">
       <div class="genre slide"><%= render 'genre', genres: @genres %></div>
     </div>
 
-    <div class="movie col-md-8">
+    <div class="movie col-lg-8 col-md-9">
       <h4 class="text-white m-3">~評価ランキング~</h4>
-      <div class="row ranking">
+      <div class="ranking">
           <%= render 'movie_ranking', rank_movie: @rank_movie %>
       </div>
-      <div class="movie row">
+
         <% if @genre.present? %>
           <%= render 'genre_movie', movies: @genre_movies, genre: @genre %>
         <% else %>
           <%= render 'all_movie', movies: @movies %>
         <% end %>
-      </div>
     </div>
 
-    <div class="side-menu col-md-2">
+    <div class="side-menu col-lg-2 col-md-12">
       <div class="slide"><%= render 'users/homes/customer_index', reports: @reports %></div>
     </div>
   </div>

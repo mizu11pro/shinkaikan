@@ -11,17 +11,23 @@
   margin-left: 30px;
  }
 
+ .index-movie-contents {
+  overflow: scroll;
+  height: 600px;
+ }
+
+ .image-size {
+  max-width: 100%;
+ }
+
 // show
 .show-movie {
  text-align: center;
   background-color: rgba( 999, 999, 999, 0.1 );
-  height: 400px;
+  max-height: 900px;
   font-weight: bold;
   border-radius: 20px;
-}
-
-.movie-show {
- padding-top:30px;
+  padding: 30px 0;
 }
 
 // edit
@@ -38,6 +44,7 @@
 .search-movie {
  background-color: rgba( 0, 0, 0, 0.15 );
  border-radius: 20px;
+ padding: 30px 0;
 }
 
 // new
@@ -50,6 +57,11 @@
  border-radius: 20px;
 }
 
-[new="movie[body]"]{
+#movie_title, #movie_directed_by {
+ width: 250px;
+}
 
+#movie_body {
+ width: 350px;
+ height: 200px;
 }
