@@ -1,0 +1,16 @@
+<div class="mt">
+  <%= movie_comment.created_at.strftime('%Y/%m/%d') %>
+  <label class="evaluation-list" data-score="<%= movie_comment.evaluation %>"></label>
+</div>
+<div class="row">
+    <div class="col-sm-5">
+      <h6><%= movie_comment.user.name %>さん</h6>
+      <%= attachment_image_tag movie_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.png" %>
+    </div>
+    <div class="col-sm-7">
+      <h6><%= movie_comment.comment %></h6>
+      <% if movie_comment.user == current_user %>
+          <%= link_to "削除", movie_movie_comment_path(movie, movie_comment), method: :delete, remote: true, data: {confirm: "削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger" %>
+      <% end %>
+    </div>
+</div>

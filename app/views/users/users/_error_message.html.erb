@@ -1,9 +1,9 @@
 <% if user.errors.any? %>
   <div class="error_pranation">
+    <h2 class="error-text">エラー箇所がございます</h2>
       <% user.errors.full_messages.each do |message| %>
-    <h2 class="error-text">1 error prohibited this obj from being saved:</h2>
     <ul>
-        <li><%= message %></li>
+        <li class="mt"><%= message %></li>
       <% end %>
     </ul>
   </div>

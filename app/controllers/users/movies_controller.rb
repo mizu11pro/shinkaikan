@@ -20,7 +20,7 @@ class Users::MoviesController < ApplicationController
 
   def index
     @reports = Report.all.order(created_at: "DESC").limit(3)
-    @rank_movie = Movie.all.order(evaluation: :desc).limit(3)
+    @rank_movie = Movie.all.sort_by { |movie| movie.movie_comments.average(:evaluation).to_i }.reverse.take(3)
     @genres = Genre.where(is_genre: true)
       if params[:genre_id].present?
         @genre = Genre.find(params[:genre_id])
@@ -36,8 +36,8 @@ class Users::MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @movie_comment = MovieComment.new
-    @movie_comments = MovieComment.all.order(current_user: "DESC")
-    @user_comment = @movie.movie_comments.where(user_id: current_user)
+    # 結果が1件しかないのでfind_byを使う
+    @user_comment = @movie.movie_comments.find_by(user_id: current_user)
   end
 
   def edit

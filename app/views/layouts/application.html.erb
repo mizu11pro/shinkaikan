@@ -21,21 +21,3 @@
     </main>
   </body>
 </html>
-
-<script>
-// evaluation
-  $('#evaluation').raty({
-    path: '/assets/',
-    scoreName: 'movie_comment[evaluation]',
-    half: true
-  });
-
-  $('.evaluation-list').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-    path: '/assets/'
-  });
-// evaluation
-</script>

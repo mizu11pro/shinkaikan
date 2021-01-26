@@ -1,5 +1,5 @@
 <div class="row font-color">
-  <div class="new-report col-sm-3">
+  <div class="new-report col-lg-3">
       <h3>お知らせ投稿</h3>
       <%= form_with model: report, url: homes_path, remote: true do |report| %>
         <h3 class="mt">画像</h3>
@@ -8,18 +8,18 @@
         <%= report.text_field :title %>
         <h3 class="mt">内容</h3>
         <%= report.text_area :body %>
-        <%= report.submit '投稿する', class: "btn btn-outline-info text-white p-2" %>
+        <div class="mt">
+          <%= report.submit '投稿する', class: "btn btn-outline-info text-white p-2" %>
+        </div>
       <% end %>
   </div>
 
-  <div class="report col-sm-9">
+  <div class="report col-lg-8 offset-1">
     <h3>お知らせ</h3>
-    <table class="table mt">
-      <tbody>
+    <class class="table mt">
         <% reports.each do |report| %>
           <%= render 'report_list', report: report %>
         <% end %>
-      </tbody>
-    </table>
+    </div>
   </div>
 </div>

@@ -1,8 +1,8 @@
-<div class="col-sm-12 back-image-2 font-color">
+<div class="col-sm-12 col-md-12 back-image-2 font-color">
   <div class="edit-user">
-    <%= render 'users/users/error_message', user: @user %>
+    <%= render 'error_message', user: @user %>
     <%= form_with model: @user, url: user_path, local: true do |user| %>
-      <h4>写真</h4>
+      <h4 class="edit-space">写真</h4>
       <%= user.attachment_field :profile_image %>
       <h4 class="edit-space">名前(2~10文字)</h4>
       <%= user.text_field :name, placeholder: "必須" %>

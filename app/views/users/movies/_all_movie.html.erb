@@ -1,5 +1,5 @@
-<h4 class="col-sm-12 text-white mt">
-  <label>映画全<%= @movies.count %>件</label>
-</h4>
+<h4 class="mt font-color">映画全<%= @movies.count %>件</h4>
 
-<%= render 'movie', movies: movies %>
+<div class="row index-movie-contents">
+  <%= render 'movie', movies: movies %>
+</div>

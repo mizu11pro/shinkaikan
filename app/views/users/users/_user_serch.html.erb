@@ -1,4 +1,4 @@
 <%= form_with url: search_users_path, method: :get, local: true do |search| %>
-  <label><%= search.text_field :search, placeholder: "ユーザ検索" %></label>
+  <label><%= search.text_field :search, placeholder: "ユーザ名で検索" %></label>
   <label><%= search.submit "検索", class: "btn btn-outline-info text-white" %></label>
 <% end %>

@@ -3,10 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // show
-.last-message {
-  margin-left: 50px;
-}
-
 .background {
   padding-top: 30px;
   background-color: rgba( 50, 50, 50, 0.3 );
@@ -19,6 +15,17 @@
  font-weight: bold;
  border-radius: 20px;
  padding-top: 10px;
+}
+
+.message-dm {
+  overflow: scroll;
+  height: 500px;
+  background-color: rgba( 999, 999, 999, 0.1 );
+  border-radius: 30px;
+}
+
+.dm-title {
+  text-align: center;
 }
 
 // edit
@@ -36,6 +43,11 @@
   padding-top: 30px;
 }
 
+.error_pranation {
+  background-color: rgba( 300, 0, 0, 0.1 );
+  padding: 30px;
+}
+
 // index
 .user-list {
   text-align: center;
@@ -49,11 +61,18 @@
 
 .index-user-name {
   padding: 10px 0;
+  text-align: center;
 }
 
 .user-follow-count {
   padding: 20px;
 }
+
+// @media (min-height: ;) {
+//   .user-index-image {
+//   width: calc(30vmin - 60px);
+//   height: calc(30vmin - 60px);
+// }
 
 // search
 .search-text {
@@ -66,3 +85,20 @@
   background-color: rgba( 0, 0, 0, 0.1 );
   border-radius: 30px;
 }
+
+// text_field
+#user_name, #user_email, #user_password {
+  width: 250px;
+}
+
+#user_introduction {
+  width: 250px;
+  height: 150px;
+}
+
+// @media (min-height: 870px){
+//   .mypage-image {
+//   width: calc(40vmin - 60px);
+//   height: calc(40vmin - 60px);
+// }
+// }

@@ -1,16 +1,13 @@
-<div class="search-text">
-	<%= render 'user_serch' %>
-</div>
-
+<h6></h6>
 <%= link_to user_path(user) do %>
-  	<%= attachment_image_tag user, :profile_image, size: "200x200", format: 'jpeg', fallback: "no_image.png", class: "rounded-circle" %>
+  	<%= attachment_image_tag user, :profile_image, size: "180x180", format: 'jpeg', fallback: "no_image.png", class: "rounded-circle mypage-image" %>
 <% end %>
 
 <h5 class="mt"><%= user.name %> さん</h5>
-<p id="follow_count_<%= user.id %>"><%= render 'users/relationships/follow_count', user: user %></p>
-<div><%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-hand-holding-heart btn btn-outline-primary text-white' %></div>
+<div id="follow_count_<%= user.id %>"><%= render 'users/relationships/follow_count', user: user %></div>
+<div class="mt"><%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-hand-holding-heart btn btn-outline-primary text-white' %></div>
 
-<% if user == current_user %>
+<% if user == current_user && current_user.email != "guest@user.com"  %>
 	<div class="index-user-button mt">
 		<%= link_to "設定", edit_user_path(user), class: 'fas fa-cogs btn btn-outline-success text-white' %>
 	</div>
@@ -23,5 +20,5 @@
 
 <div class="introduction font-color mt">
 	<h6>/ 自己紹介 \</h6>
-	<label><%= user.introduction %></label>
+	<p><%= user.introduction %></p>
 </div>

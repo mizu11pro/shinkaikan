@@ -1,15 +1,12 @@
-<tr>
-  <% if message.user_id != current_user.id %>
-    <td>
-      <%= message.created_at.strftime("%H:%M") %>
-      <%= message.message %>
-    </td>
-    <td colspan="2"></td>
-  <% else %>
-    <td colspan="1"></td>
-    <td>
-      <%= message.created_at.strftime("%H:%M") %>
-      <%= message.message %>
-    </td>
-  <% end %>
-</tr>
+<% if message.user_id != current_user.id %>
+      <div class="col-sm-6 mt">
+        <span><%= message.created_at.strftime("%H:%M") %></span>
+        <p class="message-list"><%= message.message %></p>
+      </div>
+<% else %>
+      <div class="col-sm-6 float-right mt">
+        <span><%= message.created_at.strftime("%H:%M") %></span>
+        <p class="message-list"><%= message.message %></p>
+      </div>
+      <div class="clearfix"></div>
+<% end %>

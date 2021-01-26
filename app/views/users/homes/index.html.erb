@@ -1,15 +1,40 @@
 <% if user_signed_in? %>
-  <div class="col-sm-12">
-    <div class="back-image-2 font-color">
+  <div class="col-sm-12 back-image-2 font-color">
       <% if  current_user.is_admin? != true %>
         <%= render 'slide-show' %>
-
         <h6>新海館とは..</h6>
       <% else %>
           <div class="report_list mt">
             <%= render 'admin_index', report: @report, reports: @reports %>
           </div>
       <% end %>
-    </div>
   </div>
 <% end %>
+
+<script>
+// slide-show
+  $(document).ready(function () {
+    $("#images").skippr({
+      // スライドショーの変化 ("fade" / "slide")
+      transition : 'slide',
+      // 変化に係る時間(ミリ秒)
+      speed : 2000,
+      // easingの種類
+      easing : 'easeOutQuart',
+      // ナビゲーションの形("block" / "bubble")
+      navType : 'bubble',
+      // 子要素の種類("div" / "img")
+      childrenElementType : 'div',
+      // ナビゲーション矢印の表示(trueで表示)
+      arrows : false,
+      // スライドショーの自動再生(trueで自動再生)
+      autoPlay : true,
+      // 自動再生時のスライド切替間隔(ミリ秒)
+      autoPlayDuration : 4000,
+      // キーボードの矢印キーによるスライド送りの設定(trueで有効)
+      keyboardOnAlways : true,
+      // 一枚目のスライド表示時に戻る矢印を表示するかどうか(trueで表示)
+      hidePrevious : false
+    });
+  });
+</script>

@@ -1,17 +1,2 @@
 $(".comment").html("<%= j(render 'users/movie_comments/movie_comment', movie: @movie, movie_comment: @movie_comment, user_comment: @user_comment )%>");
-
-$('.evaluation-list').raty({
-  readOnly: true,
-  score: function() {
-    return $(this).attr('data-score');
-  },
-  path: '/assets/'
-});
-
-$('#evaluation').raty({
-  path: '/assets/',
-  scoreName: 'movie_comment[evaluation]',
-  half: true
-});
-
 $('#movie_comment_comment').val('');

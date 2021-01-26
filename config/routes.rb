@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     resources :users, except: [:new, :create, :destroy] do
       get 'favorites' => 'favorites#index'
-      resources :movies, only: [] do
+      resources :movies do
         resources :favorites, only: [:destroy]
       end
       collection do

@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.report {
+  background-color: rgba( 50, 50, 50, 0.3 );
+  border-radius: 20px;
+}
+
 // index
 .new-report {
   text-align: left;
@@ -16,4 +21,13 @@
  background-color: rgba( 0, 0, 0, 0.4 );
  margin: 0 auto;
  border-radius: 20px;
+}
+
+#report_title {
+  width: 300px;
+}
+
+#report_body {
+  width: 350px;
+  height: 200px;
 }

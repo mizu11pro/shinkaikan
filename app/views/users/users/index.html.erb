@@ -1,37 +1,43 @@
 <div class="back-image-2 font-color">
 	<div class="row">
 
-		<div class="col-sm-3 background">
+		<div class="col-md-3 col-sm-4 background">
 			<div class="my-page text-center slide mt">
 				<%= render 'mypage', user: @user %>
 			</div>
 		</div>
 
-		<div class="col-sm-9">
+		<div class="col-md-9 col-sm-8">
+			<div class="search-text">
+				<%= render 'user_serch' %>
+			</div>
 			<div class="user-list">
+				<h4>~ユーザの一覧~</h4>
 				<div class="row">
 				  <% @users.each do |user| %>
-				  	<div class="col-sm-4 index-user">
+				  	<div class="col-md-6 index-user">
 				  		<div class="row">
-					  		<div class="col-sm-4 offset-1">
-									<%= link_to user_path(user) do %>
-										<%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.png", class: "rounded-circle" %>
-									<% end %>
+					  		<div class="col-md-4 offset-1">
+								<%= link_to user_path(user) do %>
+									<%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.png", class: "rounded-circle" %>
+								<% end %>
 					  		</div>
-					  		<div class="col-sm-6">
-									<div class="index-user-name"><%= user.name %> さん</div>
-									<% if user != current_user %>
-										<div class="mt">
-											<span id="relationships_<%= user.id %>"><%= render 'users/relationships/follow_button', user: user %></span>
-										</div>
-									<% end %>
+					  		<div class="col-md-6">
+								<h5 class="index-user-name"><%= user.name %> さん</h5>
+								<% if user != current_user %>
+									<div class="mt">
+										<span id="relationships_<%= user.id %>"><%= render 'users/relationships/follow_button', user: user %></span>
+									</div>
+								<% end %>
 					  		</div>
 				  		</div>
 				  		<div class="user-follow-count">
-								<span id="follow_count_<%= user.id %>"><%= render 'users/relationships/follow_count', user: user %></span>
+							<span id="follow_count_<%= user.id %>"><%= render 'users/relationships/follow_count', user: user %></span>
 				  		</div>
-								<label><%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-hand-holding-heart btn btn-outline-primary text-white' %></label>
-								<label><%= link_to "DMをする", message_path(user.id), class: 'fas fa-comments btn btn-outline-success text-white' %></label>
+				  		<div>
+							<%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-hand-holding-heart btn btn-outline-primary text-white' %>
+							<%= link_to "DMをする", message_path(user.id), class: 'fas fa-comments btn btn-outline-success text-white' %>
+				  		</div>
 				  	</div>
 				  <% end %>
 				</div>

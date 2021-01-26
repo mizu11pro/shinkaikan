@@ -1,17 +1,19 @@
-<div class="message">
-  <h4><%= @user.name %> さんとのチャット</h4>
+<div class="back-image-2 col-md-12 font-color">
+    <h4 class="text-align mt"><%= @user.name %> さんとのチャット</h4>
+    <div class="message">
+      <div class="message-contents">
+        <% @messages.each do |message| %>
+          <%= render 'message', message: message %>
+        <% end %>
+      </div>
+    </div>
 
-  <table>
-    <tbody>
-    <% @messages.each do |message| %>
-      <%= render 'message', message: message %>
-    <% end %>
-    </tbody>
-  </table>
+    <div class="text-align mt">
+      <%= form_with model: @message, remote: true do |message| %>
+          <%= message.text_area :message %>
+          <%= message.hidden_field :room_id %>
+        <%= message.submit "送信", class: "btn btn-outline-success text-white" %>
+      <% end %>
+    </div>
 
-  <%= form_with model: @message, remote: true do |message| %>
-    <%= message.text_field :message %>
-    <%= message.hidden_field :room_id %>
-    <%= message.submit "送信" %>
-  <% end %>
 </div>

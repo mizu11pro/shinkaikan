@@ -24,7 +24,7 @@
           <td><%= genre.name %></td>
           <td><%= genre.is_genre ? '表示' : '非表示' %></td>
           <td><%= link_to "変更", edit_genre_path(genre), class: "btn btn-outline-success text-success" %></td>
-          <td><%= link_to "削除する", genre_path(genre), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger"  %></td>
+          <td><%= link_to "削除", genre_path(genre), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger"  %></td>
         </tr>
       <% end %>
       </tbody>

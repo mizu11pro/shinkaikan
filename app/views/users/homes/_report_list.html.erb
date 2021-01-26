@@ -1,9 +1,13 @@
-<tr class="text-white">
-  <td><%= attachment_image_tag report, :image, size: "100x100", format: 'jpeg', fallback: "no_image.png" %></td>
-  <td><%= report.title %></td>
-  <td><%= report.body %></td>
-  <% if current_user.is_admin == true %>
-    <td><%= link_to "編集", edit_home_path(report), class: "btn btn-outline-success text-success p-2" %></td>
-    <td><%= link_to "削除", home_path(report), method: :delete,  remote: true, data: {confirm: "削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger p-2" %></td>
-  <% end %>
-</tr>
+<div class="row font-color mt">
+  <div class="col-md-3">
+    <%= attachment_image_tag report, :image, size: "100x100", format: 'jpeg', fallback: "no_image.png" %></td>
+  </div>
+  <div class="col-md-7">
+    <h6><%= report.title %></h6>
+    <h6><%= report.body %></h6>
+  </div>
+  <div class="col-md-2">
+    <%= link_to "編集", edit_home_path(report), class: "btn btn-outline-success text-success p-2" %>
+    <%= link_to "削除", home_path(report), method: :delete,  remote: true, data: {confirm: "削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger p-2" %>
+  </div>
+</div>

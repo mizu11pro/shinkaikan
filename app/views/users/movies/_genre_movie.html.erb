@@ -1,6 +1,7 @@
-<h4 class="col-sm-12 text-white mt">
+<h4 class="mt font-color">
   </label>"<%= genre.name %>" の検索結果</label>
   <label><%= movies.count %>件</label>
 </h4>
-
-<%= render 'movie', movies: movies %>
+<div class="row">
+  <%= render 'movie', movies: movies %>
+</div>
