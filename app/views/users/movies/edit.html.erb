@@ -1,4 +1,4 @@
-<div class="col-sm-12 back-image-2">
+<div class="back-image-2">
     <div class="edit-movie font-color">
       <%=form_with model: @movie, url: movie_path, local: true do |movie| %>
         <h3>画像</h3>
@@ -8,9 +8,11 @@
         <h3 class="mt-3">内容</h3>
         <p class="movie-body"><%= movie.text_area :body %></p>
         <div class="mt-3">
-          <%= movie.collection_select :genre_id, Genre.all, :id, :name %>
-          <%= movie.radio_button :is_movie, true, :checked => true  %>表示中
-          <%= movie.radio_button :is_movie, false %>非表示
+          <p><%= movie.collection_select :genre_id, Genre.all, :id, :name %></p>
+          <div>
+            <%= movie.radio_button :is_movie, true, :checked => true  %>表示中
+            <%= movie.radio_button :is_movie, false %>非表示
+          </div>
         </div>
         <div class="mt-3">
           <%= movie.submit "編集完了", class: "btn btn-outline-info text-white" %>

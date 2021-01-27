@@ -5,12 +5,12 @@
 // show
 .background {
   padding-top: 30px;
-  background-color: rgba( 50, 50, 50, 0.3 );
+  background-color: rgba( 500, 500, 500, 0.05 );
   min-height: 1200px;
 }
 
 .introduction {
- background-color: rgba( 999, 999, 999, 0.05 );
+ background-color: rgba( 999, 999, 999, 0.1 );
  height: 150px;
  font-weight: bold;
  border-radius: 20px;
@@ -20,12 +20,14 @@
 .message-dm {
   overflow: scroll;
   height: 500px;
-  background-color: rgba( 999, 999, 999, 0.1 );
+  background-color: rgba( 0, 0, 0, 0.1 );
   border-radius: 30px;
 }
 
-.dm-title {
-  text-align: center;
+.show-message-list {
+  background-color: rgba( 999, 999, 999, 0.1 );
+  border-radius: 30px;
+  margin: 20px 0;
 }
 
 // edit
@@ -49,13 +51,9 @@
 }
 
 // index
-.user-list {
-  text-align: center;
-}
-
-.index-user {
+.user-background {
   padding: 30px;
-  background-color: rgba( 0, 0, 0, 0.1 );
+  background-color: rgba( 777, 777, 777, 0.05 );
   border-radius: 40px;
 }
 
@@ -67,12 +65,6 @@
 .user-follow-count {
   padding: 20px;
 }
-
-// @media (min-height: ;) {
-//   .user-index-image {
-//   width: calc(30vmin - 60px);
-//   height: calc(30vmin - 60px);
-// }
 
 // search
 .search-text {
@@ -86,7 +78,7 @@
   border-radius: 30px;
 }
 
-// text_field
+// text_
 #user_name, #user_email, #user_password {
   width: 250px;
 }
@@ -95,10 +87,3 @@
   width: 250px;
   height: 150px;
 }
-
-// @media (min-height: 870px){
-//   .mypage-image {
-//   width: calc(40vmin - 60px);
-//   height: calc(40vmin - 60px);
-// }
-// }

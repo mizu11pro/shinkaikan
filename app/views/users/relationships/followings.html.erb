@@ -1,18 +1,14 @@
-<div class="col-sm-12 back-image-2">
-  <div class="followings font-color text-center pt-3">
-
+<div class="back-image-2">
+  <div class="followings font-color text-center mt">
     <% if @users.exists? %>
-      <h3>
-        <% if @user == current_user %>
-          <label>あなたのフォロワー</label>
-        <% else %>
-          <label><%= @user.name %> さんのフォロワー</label>
-        <% end %>
-      </h3>
+      <% if @user == current_user %>
+        <h3>あなたのフォロワー</h3>
+      <% else %>
+        <h3><%= @user.name %> さんのフォロワー</h3>
+      <% end %>
       <%= render 'relationship', users: @users %>
     <% else %>
         <h3>フォロワーは現在いません</h3>
     <% end %>
-
   </div>
 </div>

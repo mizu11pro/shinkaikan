@@ -5,15 +5,17 @@
       <h3>写真</h3>
         <%= movie.attachment_field :image %>
       <h3 class="mt">作品名</h3>
-        <label><%= movie.text_field :title, placeholder: "必須" %></label>
-      <h3 class="mt">監督</h3>
+        <%= movie.text_field :title, placeholder: "必須" %>
+      <h3 class="mt">監督名</h3>
         <%= movie.text_field :directed_by, placeholder: "必須" %>
       <h3 class="mt">内容</h3>
         <%= movie.text_area :body, placeholder: "必須" %>
       <div class="genre mt">
-        <label><%= movie.collection_select :genre_id, Genre.all, :id, :name, { include_blank: '~必須~'} %></label>
-        <label><%= movie.radio_button :is_movie, true, :checked => true  %>表示中</label>
-        <label><%= movie.radio_button :is_movie, false %>非表示</label>
+        <%= movie.collection_select :genre_id, Genre.all, :id, :name, { include_blank: '~必須~'} %>
+        <div class="mt">
+          <%= movie.radio_button :is_movie, true, :checked => true  %>表示中
+          <%= movie.radio_button :is_movie, false %>非表示
+        </div>
       </div>
       <div class="mt">
         <%= movie.submit "追加", class:"btn btn-outline-info text-white" %>

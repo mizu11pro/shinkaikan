@@ -1,11 +1,9 @@
-<div class="back-image-2 col-md-12 font-color">
+<div class="back-image-2 font-color">
     <h4 class="text-align mt"><%= @user.name %> さんとのチャット</h4>
     <div class="message">
-      <div class="message-contents">
         <% @messages.each do |message| %>
           <%= render 'message', message: message %>
         <% end %>
-      </div>
     </div>
 
     <div class="text-align mt">
