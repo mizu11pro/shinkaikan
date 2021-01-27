@@ -11,11 +11,10 @@
 			<div class="search-text">
 				<%= render 'user_serch' %>
 			</div>
-			<div class="user-list">
-				<h4>~ユーザの一覧~</h4>
+			<div class="text-align">
 				<div class="row">
 				  <% @users.each do |user| %>
-				  	<div class="col-md-6 index-user">
+				  	<div class="col-md-6 user-background">
 				  		<div class="row">
 					  		<div class="col-md-4 offset-1">
 								<%= link_to user_path(user) do %>

@@ -1,21 +1,24 @@
-<div class="col-md-12 back-image-2 font-color">
+<div class="back-image-2 font-color">
+
     <div class="row show-movie" id="movie_<%= @movie.id %>">
-        <div class="col-md-4 offset-1">
+        <div class="col-lg-4 col-md-5">
             <%= attachment_image_tag @movie, :image, size: "300x300", format: 'jpeg', fallback: "no_image.png" %>
         </div>
-        <div class="col-md-7">
+        <div class="col-lg-3 col-md-6">
             <h5 class="mt">ジャンル / <%= @movie.genre.name %></h5>
             <div class="evaluation-list" data-score="<%= @movie.movie_comments.average(:evaluation) %>">(<%= @movie.movie_comments.count %>件)</div>
             <h5 class="mt"><%= @movie.title %></h5>
-            <h5><%= @movie.directed_by %> 監督</h5>
+            <h5><%= @movie.directed_by %></h5>
             <div class="favorite-btn mt">
                 <%= render 'users/favorites/favorite_button', movie: @movie %>
             </div>
-            <h6 class="mt"><%= @movie.body %></h6>
+        </div>
+        <div class="col-lg-5 col-sm-12">
+            <h6 class="show-movie-body"><%= @movie.body %></h6>
         </div>
     </div>
-
     <div class="comment">
         <%= render 'users/movie_comments/movie_comment', movie: @movie, movie_comment: @movie_comment, user_comment: @user_comment %>
     </div>
+
 </div>

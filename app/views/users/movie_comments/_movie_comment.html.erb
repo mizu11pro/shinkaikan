@@ -1,64 +1,71 @@
 <div class="row">
-  <div class="new-comment col-md-5 offset-1">
+  <div class="new-comment col-md-4 offset-1">
     <div id="comments_error">
       <%= render 'layouts/errors', model: @movie_comment %>
     </div>
+    <div class="new-comment-word">
       <% if user_comment.present? %>
         <h3>感想はお一つまでになります</h3>
       <% else %>
-      <%= form_with(model:[movie, movie_comment], remote: true) do |movie_comment| %>
-        <div id="evaluation">
-        <label>評価</label>
-          <%= movie_comment.hidden_field :evaluation, id: :movie_comment_star %>
-        </div>
-        <h6 class="mt">感想 (視聴した感想や意見を他のユーザ様と共有しよう)</h6>
-        <div class="mt">
-          <%= movie_comment.text_area :comment, placeholder: "感想入力欄" %>
-        </div>
-        <div class="mt">
-          <%= movie_comment.submit "投稿する", class: "btn btn-outline-info text-white" %>
-        </div>
-       <% end %>
-    <% end %>
+        <%= form_with(model:[movie, movie_comment], remote: true) do |movie_comment| %>
+          <div id="evaluation">
+          <label>評価</label>
+            <%= movie_comment.hidden_field :evaluation, id: :movie_comment_star %>
+          </div>
+          <h6 class="mt">感想 (視聴した感想や意見を他のユーザ様と共有しよう)</h6>
+          <div class="mt">
+            <%= movie_comment.text_area :comment, placeholder: "感想入力欄" %>
+          </div>
+          <div class="mt">
+            <%= movie_comment.submit "投稿する", class: "btn btn-outline-info text-white" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="movie-comment col-md-6">
+  <div class="movie-comment col-md-6 offset-1">
       <h4 class="mt">感想 : <%= movie.movie_comments.count %>件</h4>
       <% if user_comment.present? %>
-        <div class="mt">
-            <%= user_comment.created_at.strftime('%Y/%m/%d') %>
-            <label class="evaluation-list" data-score="<%= user_comment.evaluation %>"></label>
-        </div>
-        <div class="row">
-            <div class="col-sm-5">
-              <% if user_comment.user == current_user %>
-                  <%= link_to "削除", movie_movie_comment_path(movie, user_comment), method: :delete, remote: true, data: {confirm: "削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger" %>
-              <% end %>
-              <h6><%= user_comment.user.name %>さん</h6>
-              <%= attachment_image_tag user_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.png" %>
-            </div>
-            <div class="col-sm-7">
-              <h6 class="mt"><%= user_comment.comment %></h6>
-            </div>
+        <div class="current-user-comment mt">
+          <div class="offset-1">
+              <%= user_comment.created_at.strftime('%Y/%m/%d') %>
+              <label class="evaluation-list" data-score="<%= user_comment.evaluation %>"></label>
+                  <% if user_comment.user == current_user %>
+                      <%= link_to "削除", movie_movie_comment_path(movie, user_comment), method: :delete, remote: true, data: {confirm: "削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger" %>
+                  <% end %>
+          </div>
+          <div class="row">
+              <div class="col-sm-5 offset-1">
+                  <h6><%= user_comment.user.name %>さん</h6>
+                  <div><%= attachment_image_tag user_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.png" %></div>
+              </div>
+              <div class="col-sm-6">
+                <h6 class="mt"><%= user_comment.comment %></h6>
+              </div>
+          </div>
         </div>
       <% end %>
       <% movie.movie_comments.where.not(user_id: current_user.id).each do |movie_comment| %>
-          <div class="mt">
+        <div class="user-comment mt">
+          <div class="offset-1">
             <%= movie_comment.created_at.strftime('%Y/%m/%d') %>
             <i class="evaluation-list" data-score="<%= movie_comment.evaluation %>"></i>
           </div>
           <div class="row">
-              <div class="col-sm-5">
+              <div class="col-sm-5 offset-1">
                 <h6><%= movie_comment.user.name %>さん</h6>
                 <%= attachment_image_tag movie_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.png" %>
               </div>
-              <div class="col-sm-7">
+              <div class="col-sm-6">
                 <h6 class="mt"><%= movie_comment.comment %></h6>
               </div>
           </div>
+        </div>
       <% end %>
   </div>
 </div>
+
 
 <script>
 // evaluation

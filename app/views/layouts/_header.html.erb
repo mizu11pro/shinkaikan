@@ -13,17 +13,17 @@
               <li class="col-md-6">
                 <ul class="row">
                   <% if current_user.is_admin? %>
-                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "Top", root_path, class: 'fab fa-buffer btn-outline-primary btn btn-outline-info text-white btn-block' %></li>
-                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "Genre", genres_path, class: 'fas fa-file-signature btn btn-outline-info text-white btn-block' %></li>
-                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "Movie",movies_path, class: 'fas fa-film btn btn-outline-info text-white btn-block' %></li>
-                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "User", users_path, class: 'fas fa-users btn btn-outline-info text-white btn-block' %></li>
+                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "Top", root_path, class: 'fab fa-buffer btn-outline-primary btn btn-outline-info p-3 text-white btn-block' %></li>
+                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "Genre", genres_path, class: 'fas fa-file-signature btn btn-outline-info p-3 text-white btn-block' %></li>
+                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "Movie",movies_path, class: 'fas fa-film btn btn-outline-info text-white p-3 btn-block' %></li>
+                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "User", users_path, class: 'fas fa-users btn btn-outline-info text-white p-3 btn-block' %></li>
                   <% else %>
-                    <li class="nav-item"><%= link_to "Top", root_path, class: 'fab fa-buffer btn btn-outline-info p-3 mr-2 text-white' %></li>
-                    <li class="nav-item"><%= link_to "Movie", movies_path, class: 'fas fa-video btn btn-outline-info p-3 mr-2 text-white' %></li>
-                    <li class="nav-item"><%= link_to "User", users_path, class: 'fas fa-users btn btn-outline-info p-3 mr-2 text-white' %></li>
-                    <li class="nav-item"><%= link_to "DM", user_path(current_user), class: 'far fa-comment-dots btn btn-outline-info p-3 mr-2 text-white' %></li>
+                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "Top", root_path, class: 'fab fa-buffer btn btn-outline-info text-white p-3 btn-block' %></li>
+                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "Movie", movies_path, class: 'fas fa-video btn btn-outline-info text-white p-3 btn-block' %></li>
+                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "User", users_path, class: 'fas fa-users btn btn-outline-info text-white p-3 btn-block' %></li>
+                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "DM", user_path(current_user), class: 'far fa-comment-dots btn btn-outline-info p-3 text-white btn-block' %></li>
                   <% end %>
-                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "logout", destroy_user_session_path, method: :delete, class: 'fas fa-outdent btn btn-outline-info text-white btn-block' %></li>
+                    <li class="nav-item col-sm-6 col-md-4 col-lg-2"><%= link_to "logout", destroy_user_session_path, method: :delete, class: 'fas fa-outdent btn btn-outline-info text-white p-3 btn-block' %></li>
                 </ul>
               </li>
             </ul>

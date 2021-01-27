@@ -2,9 +2,9 @@
   <div class="new-report col-lg-3">
       <h3>お知らせ投稿</h3>
       <%= form_with model: report, url: homes_path, remote: true do |report| %>
-        <h3 class="mt">画像</h3>
+        <h3 class="mt">写真</h3>
         <%= report.attachment_field :image %>
-        <h3 class="mt">お題</h3>
+        <h3 class="mt">タイトル</h3>
         <%= report.text_field :title %>
         <h3 class="mt">内容</h3>
         <%= report.text_area :body %>
@@ -14,12 +14,10 @@
       <% end %>
   </div>
 
-  <div class="report col-lg-8 offset-1">
+  <div class="col-lg-8 offset-1 report mt">
     <h3>お知らせ</h3>
-    <class class="table mt">
-        <% reports.each do |report| %>
-          <%= render 'report_list', report: report %>
-        <% end %>
-    </div>
+    <% reports.each do |report| %>
+      <%= render 'report_list', report: report %>
+    <% end %>
   </div>
 </div>

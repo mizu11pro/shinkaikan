@@ -1,10 +1,10 @@
 <% if message.user_id != current_user.id %>
-      <div class="col-sm-6 mt">
+      <div class="col-sm-6 col-6 mt">
         <span><%= message.created_at.strftime("%H:%M") %></span>
         <p class="message-list"><%= message.message %></p>
       </div>
 <% else %>
-      <div class="col-sm-6 float-right mt">
+      <div class="col-sm-5 col-6 offset-1 float-right mt">
         <span><%= message.created_at.strftime("%H:%M") %></span>
         <p class="message-list"><%= message.message %></p>
       </div>

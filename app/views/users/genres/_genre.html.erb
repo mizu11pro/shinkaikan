@@ -1,32 +1,27 @@
 <div class="new-genre font-color">
   <%= form_with model: genre, url: genres_path, remote: true do |genre| %>
     <h4>ジャンル</h4>
-    <label><%= genre.text_field :name %></label>
-    <label class="new-genre-list"><%= genre.radio_button :is_genre, true, :checked => true  %>表示中</label>
-    <label><%= genre.radio_button :is_genre, false %>非表示</label>
-    <label class="new-genre-list"><%= genre.submit "追加する", class: "btn btn-outline-info text-white" %></label>
+    <h6 class="new-genre-list mt">
+      <%= genre.radio_button :is_genre, true, :checked => true  %>表示中
+      <%= genre.radio_button :is_genre, false %>非表示
+    </h6>
+    <div><%= genre.text_field :name %>
+    <span class="new-genre-list"><%= genre.submit "追加する", class: "btn btn-outline-info text-white" %></span>
+    </div>
   <% end %>
 </div>
 
-  <div class="genre-list">
-    <table class="table font-color">
-      <thead>
-        <tr>
-          <th>ジャンル名</th>
-          <th>表示 or 非表示</th>
-          <th collspan="3"></th>
-          <th collspan="4"></th>
-        </tr>
-      <thead>
-      <tbody class="genre-list">
-      <% genres.each do |genre| %>
-        <tr>
-          <td><%= genre.name %></td>
-          <td><%= genre.is_genre ? '表示' : '非表示' %></td>
-          <td><%= link_to "変更", edit_genre_path(genre), class: "btn btn-outline-success text-success" %></td>
-          <td><%= link_to "削除", genre_path(genre), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger"  %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+  <div class="row">
+    <% genres.each do |genre| %>
+    <div class="col-sm-3">
+      <div class="genre-list font-color">
+        <h6><%= genre.name %></h6>
+        <h6><%= genre.is_genre ? '表示' : '非表示' %></h6>
+        <div class="mt">
+          <%= link_to "変更", edit_genre_path(genre), class: "btn btn-outline-success text-success" %>
+          <%= link_to "削除", genre_path(genre), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger"  %>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>

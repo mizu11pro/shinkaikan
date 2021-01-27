@@ -17,16 +17,16 @@
 			</div>
 			<% if @user == current_user %>
 				<div class="message-dm font-color mt">
-					<h4 class="mt dm-title">~DM履歴~</h4>
+					<h4 class="offset-1 mt">~DM履歴~</h4>
 					<% @anotherEntries.each do |entry| %>
-						<div class="row mt">
-							<div class="offset-1 col-sm-4 col-xs-3">
+						<div class="row show-message-list">
+							<div class="offset-1 col-sm-4 col-4">
 								<h6><%= entry.user.name %> さん</h6>
 								<%= link_to user_path(entry.user) do %>
 									<%= attachment_image_tag entry.user, :profile_image, size: "100x100", format: 'jpeg', fallback: "no_image.png", class: "rounded-circle" %>
 								<% end %>
 							</div>
-							<div class="col-sm-6 col-xs-9">
+							<div class="col-sm-7 col-7">
 								<div class="mt"><%= link_to "DMをする", message_path(entry.user.id), class: 'fas fa-comments btn btn-outline-success text-white' %></div>
 								<div class="last-message mt">
 									<% if entry.room.message_ids.last.present? %>
