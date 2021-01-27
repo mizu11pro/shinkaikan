@@ -4,11 +4,11 @@ class Users::GenresController < ApplicationController
   def index
     @genre = Genre.new
     @genres = Genre.all
-      if current_user.is_admin == true
-        render "index"
-      else
-        redirect_to user_path(current_user)
-      end
+    if current_user.is_admin == true
+      render "index"
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def create
@@ -19,19 +19,19 @@ class Users::GenresController < ApplicationController
 
   def edit
     @genre = Genre.find(params[:id])
-      if current_user.is_admin == true
-        render "edit"
-      else
-        redirect_to user_path(current_user)
-      end
+    if current_user.is_admin == true
+      render "edit"
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-     redirect_to genres_path
+      redirect_to genres_path
     else
-     render "edit"
+      render "edit"
     end
   end
 

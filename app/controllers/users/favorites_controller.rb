@@ -24,5 +24,4 @@ class Users::FavoritesController < ApplicationController
     # @user = User.find(params[:user_id])
     @favorite.destroy
   end
-
 end

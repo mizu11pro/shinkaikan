@@ -22,15 +22,15 @@ class Users::MoviesController < ApplicationController
     @reports = Report.all.order(created_at: "DESC").limit(3)
     @rank_movie = Movie.all.sort_by { |movie| movie.movie_comments.average(:evaluation).to_i }.reverse.take(3)
     @genres = Genre.where(is_genre: true)
-      if params[:genre_id].present?
-        @genre = Genre.find(params[:genre_id])
-        @genre_movies = @genre.movies.where(is_movie: true )
-      end
-      if current_user.is_admin
-        @movies = Movie.all.order(id: "DESC")
-      else
-        @movies = Movie.where(is_movie: true ).order(id: "DESC")
-      end
+    if params[:genre_id].present?
+      @genre = Genre.find(params[:genre_id])
+      @genre_movies = @genre.movies.where(is_movie: true)
+    end
+    if current_user.is_admin
+      @movies = Movie.all.order(id: "DESC")
+    else
+      @movies = Movie.where(is_movie: true).order(id: "DESC")
+    end
   end
 
   def show
@@ -64,5 +64,4 @@ class Users::MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:title, :directed_by, :body, :image, :is_movie, :genre_id)
   end
-
 end

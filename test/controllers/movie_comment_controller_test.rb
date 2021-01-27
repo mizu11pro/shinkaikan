@@ -10,5 +10,4 @@ class MovieCommentControllerTest < ActionDispatch::IntegrationTest
     get movie_comment_destroy_url
     assert_response :success
   end
-
 end
