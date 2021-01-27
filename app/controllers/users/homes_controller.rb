@@ -14,11 +14,11 @@ class Users::HomesController < ApplicationController
 
   def edit
     @report = Report.find(params[:id])
-      if current_user.is_admin == true
-        render "edit"
-      else
-        redirect_to user_path(current_user)
-      end
+    if current_user.is_admin == true
+      render "edit"
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update

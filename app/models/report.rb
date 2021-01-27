@@ -1,5 +1,4 @@
 class Report < ApplicationRecord
-
   attachment :image
 
   with_options presence: true do

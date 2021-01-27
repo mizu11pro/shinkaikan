@@ -1,14 +1,13 @@
 class User < ApplicationRecord
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   attachment :profile_image
 
   with_options presence: true do
-  validates :name, uniqueness: true, length: {minimum: 2, maximum: 10 }
-  validates :email
+    validates :name, uniqueness: true, length: { minimum: 2, maximum: 10 }
+    validates :email
   end
-  validates :introduction, length: {maximum: 100 }
+  validates :introduction, length: { maximum: 100 }
 
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -16,14 +15,14 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :room, through: :entry
 
-# follow機能
+  # follow機能
   has_many :of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :of_relationships, source: :follower
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
 
   def follow(user_id)
-  relationships.create(followed_id: user_id)
+    relationships.create(followed_id: user_id)
   end
 
   def unfollow(user_id)
@@ -33,11 +32,11 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-# /follow機能
+  # /follow機能
 
   def self.search(search)
     return User.all unless search
-      User.where(['name LIKE ?', "%#{search}%"]).where.not(name: 'guest')
+    User.where(['name LIKE ?', "%#{search}%"]).where.not(name: 'guest')
   end
 
   def self.guest
@@ -45,5 +44,4 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
-
 end
