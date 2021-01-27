@@ -1,7 +1,6 @@
 <div class="row">
 	<% rank_movie.each.with_index(1) do |movie, i| %>
-		<div class="card text-center col-sm-4">
-			<div class="card-body">
+		<div class="movie-list col-sm-4">
 					<h4>第<%= i %>位</h4>
 					<h6>ジャンル/ <%= movie.genre.name %></h6>
 					<div class="evaluation-list" data-score="<%= movie.movie_comments.average(:evaluation) %>"></div>
@@ -12,7 +11,6 @@
 						<%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.png" %>
 					<% end %>
 					<p class="mt"><%= movie.body.truncate(23) %></p>
-			</div>
 		</div>
 	<% end %>
 </div>

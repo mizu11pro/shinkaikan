@@ -22,6 +22,7 @@ class Users::UsersController < ApplicationController
     @favorites = @user.favorites.where(movie_id: params[:movie_id])
     @rank_movies = Movie.joins(:movie_comments).where(movie_comments: { user_id: params[:id] }).order(evaluation: :desc).limit(3)
 
+    # DM履歴の相手方との最終メッセージ取得
     @current_entries = current_user.entries
     my_room_ids = []
     @current_entries.each do |entry|
@@ -29,17 +30,6 @@ class Users::UsersController < ApplicationController
     end
     @anothet_entries = Entry.where(room_id: my_room_ids).where('user_id != ?', @user.id)
   end
-  # movieがmovie＿commentだけを持っているmovieを取得
-  # それに対してmovie_commentのuser_idの条件を指定
-
-  # @rank_movies = []
-  #  @rank_movies_tmp.each.with_index(1) do |movie, i|
-  #   @movie_comments.each.with_index(1) do |movie_comment, j|
-  #       if movie.id == movie_comment.movie_id
-  #         @rank_movies << movie
-  #       end
-  #   end
-  # end
 
   def edit
     if @user == current_user && guests_cannot_open

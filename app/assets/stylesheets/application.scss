@@ -51,19 +51,20 @@
  .back-image {
    background-image: image-url("shinkaikan.jpg");
    padding-top: 100px;
-   min-height: 1200px;
+   min-height: 100px;
    filter: saturate(150%);
  }
 
  .back-image-2{
-  background-image: image-url("back-image-2.jpg");
-  min-height: 1200px;
+  background-image: image-url("back-image3.jpeg");
+  min-height: 1100px;
   width: 100%;
+  background-size: cover;
  }
 
 
   #slide-show{
-   height: 600px;
+   height: 550px;
   }
   .image1 {
     background-image: url(test1.jpg);
@@ -112,6 +113,9 @@
  }
 
  // text_
+ #user_name, #user_email, #user_password, #user_password_confirmation {
+  width: 80%;
+ }
  .field_with_errors {
   display: contents;
  }
@@ -119,6 +123,7 @@
  #error_explanation {
   background-color: rgba( 300, 0, 0, 0.1 );
   max-width: 380px;
+  color: red;
  }
 
  #error_explanation ul li {

@@ -8,22 +8,23 @@
 
 // _moviecomment
 .new-comment-word {
-  background-color: rgba( 999, 999, 999, 0.2 );
+  background-color: rgba( 999, 999, 999, 0.6 );
   border-radius: 30px;
   padding: 20px 30px;
 }
 
 .movie-comment {
-  background-color: rgba( 999, 999, 999, 0.2 );
+  background-color: rgba( 999, 999, 999, 0.6 );
   border-radius: 30px;
   overflow: scroll;
   height: 600px;
 }
 
 .current-user-comment, .user-comment {
- background-color: rgba( 0, 0, 0, 0.2 );
+ background-color: rgba( 0, 0, 0, 0.4 );
  border-radius: 20px;
  padding: 10px 0;
+ color: white;
 }
 
 // text

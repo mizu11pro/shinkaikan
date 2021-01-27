@@ -1,6 +1,5 @@
 <% movies.each do |movie| %>
-  <div class="card text-align col-lg-4 col-md-6">
-    <div class="card-body">
+  <div class="movie-list col-lg-4 col-md-6">
 
       <% if current_user.is_admin? == true %>
         <div><%= movie.is_movie ? '表示中' : '非表示' %></div>
@@ -24,6 +23,5 @@
         <%= movie.body.truncate(25) %>
       </div>
 
-    </div>
   </div>
 <% end %>

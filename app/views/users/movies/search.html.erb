@@ -1,7 +1,7 @@
-<div class="col-sm-12 back-image-2 font-color">
+<div class="col-sm-12 back-image-2">
   <div class="movie">
-    <h4 class="search-text">"<%= params[:search].truncate(25) %>"の検索結果</h4>
-    <div class="row">
+    <h3 class="search-text">"<%= params[:search].truncate(25) %>"の検索結果</h3>
+    <div class="row font-color">
       <% @movie_search.each do |movie| %>
         <div class="col-md-6 search-movie mt">
           <div class="row text-align">

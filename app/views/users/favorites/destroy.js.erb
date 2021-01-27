@@ -12,6 +12,6 @@ else{
   $("#movie_favorite_<%= @movie.id %>").hide()
 
   <% if current_user.favorites.count == 0 %>
-    $(".favorite-list").html("<div class='no-favo font-color'>現在いいねしている映画はございません</div>");
+    $(".favorite-list").html("<div class='no-favo'>現在いいねしている映画はございません</div>");
   <% end %>
 }

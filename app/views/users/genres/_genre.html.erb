@@ -11,17 +11,17 @@
   <% end %>
 </div>
 
-  <div class="row">
-    <% genres.each do |genre| %>
-    <div class="col-sm-3">
-      <div class="genre-list font-color">
-        <h6><%= genre.name %></h6>
-        <h6><%= genre.is_genre ? '表示' : '非表示' %></h6>
-        <div class="mt">
-          <%= link_to "変更", edit_genre_path(genre), class: "btn btn-outline-success text-success" %>
-          <%= link_to "削除", genre_path(genre), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger text-danger"  %>
-        </div>
+<div class="row">
+  <% genres.each do |genre| %>
+  <div class="col-sm-3">
+    <div class="genre-list font-color">
+      <h6><%= genre.name %></h6>
+      <h6><%= genre.is_genre ? '表示中' : '非表示' %></h6>
+      <div class="mt">
+        <%= link_to "変更", edit_genre_path(genre), class: "btn btn-outline-success text-white" %>
+        <%= link_to "削除", genre_path(genre), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-outline-danger text-white"  %>
       </div>
     </div>
-    <% end %>
   </div>
+  <% end %>
+</div>

@@ -3,11 +3,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
 
+  validates :introduction, length: { maximum: 100 }
   with_options presence: true do
     validates :name, uniqueness: true, length: { minimum: 2, maximum: 10 }
     validates :email
   end
-  validates :introduction, length: { maximum: 100 }
 
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

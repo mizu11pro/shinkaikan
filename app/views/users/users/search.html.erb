@@ -1,10 +1,10 @@
-<div class="col-md-12 back-image-2 font-color">
+<div class="back-image-2">
 
 		<div class="search-text">
 			<%= render 'user_serch' %>
 			<h4>"<%= params[:search].truncate(13) %>"の検索結果</h4>
 		</div>
-		<div class="row">
+		<div class="row font-color">
 			<% @user_search.each do |user| %>
 				<div class="col-lg-3 col-md-4 search-user">
 					<div class="row">

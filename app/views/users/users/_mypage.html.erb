@@ -19,5 +19,9 @@
 
 <div class="introduction mt">
 	<h6>自己紹介</h6>
-	<h6><%= user.introduction %></h6>
+	<% if user.introduction.present? %>
+		<h6><%= user.introduction %></h6>
+	<% else %>
+		<h6>よろしくお願いいたします＾＾</h6>
+	<% end %>
 </div>
