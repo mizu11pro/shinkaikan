@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
   def self.search(search)
     return User.all unless search
-    User.where(['name LIKE ?', "%#{search}%"]).where.not(name: 'guest')
+    User.where(['name LIKE ?', "%#{search}%"]).where.not(name: 'guest', email: "admin@user")
   end
 
   def self.guest
