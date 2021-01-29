@@ -6,16 +6,19 @@
 <div id="follow_count_<%= user.id %>"><%= render 'users/relationships/follow_count', user: user %></div>
 <div class="mt"><%= link_to "いいね一覧", user_favorites_path(user), class: 'fas fa-hand-holding-heart btn btn-outline-primary text-white' %></div>
 
-<% if user == current_user && current_user.email != "guest@user.com"  %>
-	<div class="index-user-button mt">
-		<%= link_to "設定", edit_user_path(user), class: 'fas fa-cogs btn btn-outline-success text-white' %>
-	</div>
-<% else %>
-	<div>
-		<label id="relationships_<%= @user.id %>" class="mt"><%= render 'users/relationships/follow_button', user: @user %></label>
-		<label class="mt"><%= link_to "DMをする", message_path(@user.id), class: 'fas fa-comments btn btn-outline-success text-white' %></label>
-	</div>
-<% end %>
+
+	<% if user == current_user %>
+		<% if current_user.email != "guest@user.com"%>
+			<div class="index-user-button mt">
+				<%= link_to "設定", edit_user_path(user), class: 'fas fa-cogs btn btn-outline-success text-white' %>
+			</div>
+		<% end %>
+	<% else %>
+		<div>
+			<label id="relationships_<%= @user.id %>" class="mt"><%= render 'users/relationships/follow_button', user: @user %></label>
+			<label class="mt"><%= link_to "DMをする", message_path(@user.id), class: 'fas fa-comments btn btn-outline-success text-white' %></label>
+		</div>
+	<% end %>
 
 <div class="introduction mt">
 	<h6>自己紹介</h6>
