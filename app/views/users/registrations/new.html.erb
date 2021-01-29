@@ -1,4 +1,4 @@
-<div class="col-sm-12 back-image font-color">
+<div class="back-image font-color">
     <div class="login-page">
       <div class="error-message">
         <%= render "users/shared/error_messages", resource: resource %>
@@ -38,6 +38,8 @@
       <h4><%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post, class: "btn-outline-info  btn btn-outline-info text-white" %></h4>
       <h4>既にご登録いただいている方<%= link_to "ログインはこちら", user_session_path, class: "btn-outline-info  btn btn-outline-info text-white mt-3" %></h4>
     </div>
+    <div class="mt">
+      <%= render 'users/homes/description' %>
+    </div>
 
-      <h4>新海館とは、、</h4>
 </div>

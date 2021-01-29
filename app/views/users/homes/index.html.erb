@@ -1,8 +1,15 @@
 <% if user_signed_in? %>
   <div class="col-sm-12 back-image-2 font-color">
       <% if  current_user.is_admin? != true %>
-        <%= render 'slide-show' %>
-        <h6>新海館とは..</h6>
+        <div class="description mt">
+          <h4 class="title-color">こんな時あなたにも訪れませんか??</h4>
+          <h6>・この映画好きだけど何度も見るより似たような他の映画が見たい、</h6>
+          <h6>・自分で探すと好きなジャンルが片寄ってしまう。</h6>
+          <h6>・他の方の意見、ランキングや評価で決めたい!!</h6>
+          <h6>簡単なご説明させていただいておりますので下記をご確認ください^^</h6>
+        </div>
+          <%= render 'slide-show' %>
+          <%= render 'description' %>
       <% else %>
           <div class="report_list mt">
             <%= render 'admin_index', report: @report, reports: @reports %>

@@ -12,12 +12,12 @@
 				<%= render 'user_serch' %>
 			</div>
 			<div class="user_ranking">
-				<h4 class="font-color mt">~評価ランキング~</h4>
+				<h4 class="font-color mt">"<%= @user.name %>"さんの 評価ランキング</h4>
 				<%= render 'users/movies/movie_ranking', rank_movie: @rank_movies %>
 			</div>
 			<% if @user == current_user %>
 				<div class="message-dm font-color mt">
-					<h4 class="offset-1 mt">~DM履歴~</h4>
+					<h4 class="offset-1 title-color mt">~DM履歴~</h4>
 					<% @anothet_entries.each do |entry| %>
 						<div class="row show-message-list">
 							<div class="offset-1 col-sm-4 col-4">

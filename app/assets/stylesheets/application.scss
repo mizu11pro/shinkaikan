@@ -51,8 +51,9 @@
 
  .back-image {
    background-image: image-url("shinkaikan.jpg");
-   padding-top: 100px;
+   padding-top: 50px;
    min-height: 1000px;
+   width: 100%;
    filter: saturate(150%);
    background-size: cover;
  }
@@ -109,7 +110,7 @@
   font-weight: bold;
   padding: 30px;
   max-width: 450px;
-  background-color: rgba( 0, 0, 0, 0.6 );
+  background-color: rgba( 0, 0, 0, 0.4 );
   margin: 0 auto;
   border-radius: 20px;
  }

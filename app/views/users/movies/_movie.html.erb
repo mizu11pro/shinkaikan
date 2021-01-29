@@ -8,11 +8,11 @@
       <% end %>
       <h5 class="movie-contents-height mt"><%= movie.title.truncate(13) %></h5>
       <h6 class="movie-contents-height"><%= movie.directed_by.truncate(13) %></h6>
-      <div>
-        <%= link_to movie_path(movie) do %>
+      <%= link_to movie_path(movie) do %>
+        <div>
           <%= attachment_image_tag movie, :image, size: "150x200", format: 'jpeg', fallback: "no_image.png" %>
-        <% end %>
-      </div>
+         </div>
+      <% end %>
       <div class="mt">
         <% if movie.movie_comments.present? %>
           <i class="fas fa-star"></i><%= movie.movie_comments.average(:evaluation).round(1) %>
