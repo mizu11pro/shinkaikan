@@ -1,6 +1,3 @@
-    # subject { user.valid? }
-    # let!(:other_user) { create(:user) }
-    # let(:user) { build(:user) }
 Rspec.describe 'Userモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     let(:user) { build(:user) }
