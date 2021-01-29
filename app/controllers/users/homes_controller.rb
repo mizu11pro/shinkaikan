@@ -1,5 +1,6 @@
 class Users::HomesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_report, only: [:edit, :update, :destroy]
 
   def index
     @report = Report.new
@@ -13,7 +14,6 @@ class Users::HomesController < ApplicationController
   end
 
   def edit
-    @report = Report.find(params[:id])
     if current_user.is_admin == true
       render "edit"
     else
@@ -22,14 +22,15 @@ class Users::HomesController < ApplicationController
   end
 
   def update
-    @report = Report.find(params[:id])
-    @report.update(report_params)
-    redirect_to root_path
+    if @report.update(report_params)
+      redirect_to root_path
+    else
+      render "edit"
+    end
   end
 
   def destroy
     @reports = Report.all
-    @report = Report.find(params[:id])
     @report.destroy
   end
 
@@ -37,5 +38,9 @@ class Users::HomesController < ApplicationController
 
   def report_params
     params.require(:report).permit(:image, :title, :body)
+  end
+
+  def set_report
+     @report = Report.find(params[:id])
   end
 end

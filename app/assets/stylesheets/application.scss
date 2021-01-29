@@ -29,9 +29,10 @@
 
  // header
   .header-image {
-  background-image: image-url("picture_pc_fa63a41226133ef4ce1d5630bf53cac8.jpg.webp");
+  background-image: image-url("header-image1.jpeg");
    max-height: 400px;
    padding: 30px 0;
+   background-size: cover;
  }
 
  header {
@@ -53,6 +54,7 @@
    padding-top: 100px;
    min-height: 1000px;
    filter: saturate(150%);
+   background-size: cover;
  }
 
  .back-image-2{

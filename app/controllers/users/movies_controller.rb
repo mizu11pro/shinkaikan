@@ -1,5 +1,6 @@
 class Users::MoviesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   def search
     @movie_search = Movie.search(params[:search])
@@ -34,18 +35,20 @@ class Users::MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
     @movie_comment = MovieComment.new
     # 結果が1件しかないのでfind_byを使う
     @user_comment = @movie.movie_comments.find_by(user_id: current_user)
   end
 
   def edit
-    @movie = Movie.find(params[:id])
+    if current_user.is_admin == true
+      render "edit"
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
-    @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
       redirect_to movies_path
     else
@@ -54,7 +57,6 @@ class Users::MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
     @movie.destroy
     redirect_to movies_path
   end
@@ -64,4 +66,9 @@ class Users::MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:title, :directed_by, :body, :image, :is_movie, :genre_id)
   end
+
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
+
 end
