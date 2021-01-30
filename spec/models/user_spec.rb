@@ -70,8 +70,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
           expect(User.reflect_on_association(:entries).macro).to eq :has_many
         end
       end
-
     end
-      # アソシエーションのテスト
+
   end
 end
