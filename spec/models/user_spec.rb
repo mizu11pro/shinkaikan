@@ -1,10 +1,12 @@
-Rspec.describe 'Userモデルのテスト', type: :model do
+require 'rails_helper'
+
+RSpec.describe 'Userモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
-    let(:user) { build(:user) }
-    subject { test_user.valid? }
+    let(:user) { User.create!(email: 'test@example.com', name: 'aaaa', password: 'aaaaaaa') }
+    let(:other_user) { User.create!(email: 'other_user@example.com', name: 'bbbb', password: 'bbbbbbb') }
+    subject { user.valid? }
 
     context 'nameのカラム' do
-      let(:test_user) { user }
       it '空欄でないこと' do
         user.name = ''
         is_expected.to eq false
@@ -18,7 +20,7 @@ Rspec.describe 'Userモデルのテスト', type: :model do
         is_expected.to eq true
       end
       it '10文字以下: 11文字は×' do
-        user.namr = Faker::Lorem.characters(number: 11)
+        user.name = Faker::Lorem.characters(number: 11)
         is_expected.to eq false
       end
       it '10文字以下: 10文字は◯' do
@@ -42,11 +44,11 @@ Rspec.describe 'Userモデルのテスト', type: :model do
     context 'introductionのカラム' do
       let(:test_user) { user }
       it '100文字以下: 101文字は×' do
-        user.introduction = Faker::Lorem.characters(numder: 101)
+        user.introduction = Faker::Lorem.characters(number: 101)
         is_expected.to eq false
       end
       it '100文字以下: 100文字は◯' do
-        user.introduction = Faker::Lorem.characters(numbaer: 100)
+        user.introduction = Faker::Lorem.characters(number: 100)
       end
     end
 
