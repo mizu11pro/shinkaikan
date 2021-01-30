@@ -10,7 +10,6 @@ class Users::UsersController < ApplicationController
     @user = current_user
     if current_user || is_admin
       @users = User.where(is_admin: false).where.not(email: 'guest@user.com')
-      @user != current_user
     end
   end
 
