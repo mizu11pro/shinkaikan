@@ -9,7 +9,7 @@
       <% else %>
         <%= form_with(model:[movie, movie_comment], remote: true) do |movie_comment| %>
           <div id="evaluation">
-          <label>評価</label>
+            <label>評価</label>
             <%= movie_comment.hidden_field :evaluation, id: :movie_comment_star %>
           </div>
           <h6 class="mt">感想 (視聴した感想や意見を他のユーザ様と共有しよう)</h6>
@@ -37,8 +37,8 @@
           </div>
           <div class="row">
               <div class="col-sm-5 offset-1">
-                  <h6><%= user_comment.user.name %>さん</h6>
-                  <div><%= attachment_image_tag user_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.png" %></div>
+                <h6><%= user_comment.user.name %>さん</h6>
+                <div><%= attachment_image_tag user_comment.user, :profile_image, size: "50x50", format: "jpeg", fallback: "no_image.png" %></div>
               </div>
               <div class="col-sm-6">
                 <h6 class="mt"><%= user_comment.comment %></h6>
@@ -70,7 +70,9 @@
 <script>
 // evaluation
   $('#evaluation').raty({
-    path: '/assets/',
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
     scoreName: 'movie_comment[evaluation]',
     half: true
   });
@@ -80,7 +82,9 @@
     score: function() {
       return $(this).attr('data-score');
     },
-    path: '/assets/'
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
   });
 // evaluation
 </script>
