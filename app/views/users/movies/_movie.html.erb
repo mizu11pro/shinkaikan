@@ -17,6 +17,7 @@
         <% if movie.movie_comments.present? %>
           <i class="fas fa-star"></i><%= movie.movie_comments.average(:evaluation).round(1) %>
         <% end %>
+        <span> / </span>
         <label><%= movie.genre.name %></label>
       </div>
       <div class="mt">
