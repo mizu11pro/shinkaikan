@@ -1,4 +1,15 @@
 ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メール
+        password: パスワード
+      movie_comment:
+        evaluation: 星評価
+
+
+
   datetime:
     distance_in_words:
       half_a_minute: "30秒前後"

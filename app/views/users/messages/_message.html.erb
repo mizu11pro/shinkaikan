@@ -5,7 +5,7 @@
       </div>
 <% else %>
       <div class="col-sm-5 col-6 offset-1 float-right mt">
-        <span><%= message.created_at.strftime("%H:%M") %></span>
+        <span><%= message.created_at.strftime("%Y/%m/%d/ %H:%M") %></span>
         <p class="message-list"><%= message.message %></p>
       </div>
       <div class="clearfix"></div>
