@@ -1,6 +1,6 @@
-<div class="back-image-2">
+<div class="back-image-2 col-12">
 
-    <div class="row show-movie" id="movie_<%= @movie.id %>">
+    <div class="row show-movie font-color" id="movie_<%= @movie.id %>">
         <div class="col-lg-4 col-md-5">
             <%= attachment_image_tag @movie, :image, size: "300x300", format: 'jpeg', fallback: "no_image.png" %>
         </div>
