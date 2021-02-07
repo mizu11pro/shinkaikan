@@ -17,118 +17,118 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
- * {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+* {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+}
+
+.font-color {
+ color: white;
+}
+
+// header
+.header-image {
+ background-image: image-url("header-image1.jpeg");
+ max-height: 400px;
+ padding: 30px 0;
+ background-size: cover;
+}
+
+header {
+ width: 100%;
+ li {
+  display: inline;
+ .btn{
+  font-size: 1rem;
+  padding: 10px 0;
  }
-
- .font-color {
-  color: white;
+}
+ .col-md-4 {
+  padding: 0 5px;
  }
+}
 
- // header
-  .header-image {
-  background-image: image-url("header-image1.jpeg");
-   max-height: 400px;
-   padding: 30px 0;
-   background-size: cover;
- }
+.back-image {
+ background-image: image-url("shinkaikan.jpg");
+ padding-top: 50px;
+ min-height: 1000px;
+ width: 100%;
+ filter: saturate(150%);
+ background-size: cover;
+}
 
- header {
-  width: 100%;
-  li {
-   display: inline;
-   .btn{
-    font-size: 1rem;
-    padding: 10px 0;
-   }
-  }
-  .col-md-4 {
-   padding: 0 5px;
-  }
- }
-
- .back-image {
-   background-image: image-url("shinkaikan.jpg");
-   padding-top: 50px;
-   min-height: 1000px;
-   width: 100%;
-   filter: saturate(150%);
-   background-size: cover;
- }
-
- .back-image-2{
-  background-image: image-url("back-image3.jpeg");
-  min-height: 1100px;
-  width: 100%;
-  background-size: cover;
- }
+.back-image-2{
+ background-image: image-url("back-image3.jpeg");
+ min-height: 1100px;
+ width: 100%;
+ background-size: cover;
+}
 
 
-  #slide-show{
-   height: 550px;
-  }
-  .image1 {
-    background-image: image-url("test1.jpg");
-  }
-  .image2 {
-    background-image: image-url("test2.webp");
-  }
-  .image3 {
-    background-image: image-url("test3.jpeg");
-  }
-  .image4 {
-    background-image: image-url("test4.jpeg");
-  }
-  .image5 {
-    background-image: image-url("test5.jpeg");
-  }
+#slide-show{
+ height: 550px;
+}
+.image1 {
+ background-image: image-url("test1.jpg");
+}
+.image2 {
+ background-image: image-url("test2.webp");
+}
+.image3 {
+ background-image: image-url("test3.jpeg");
+}
+.image4 {
+ background-image: image-url("test4.jpeg");
+}
+.image5 {
+ background-image: image-url("test5.jpeg");
+}
 
-  .slide {
-   position: sticky;
-   top: 60px;
-  }
+.slide {
+ position: sticky;
+ top: 60px;
+}
 
-  .mt {
-   margin-top: 20px;
-  }
+.mt {
+ margin-top: 20px;
+}
 
-  .text-align {
-   text-align: center;
-  }
+.text-align {
+ text-align: center;
+}
 
-  .mandatory {
-   color: red;
-   padding: 3px;
-  }
+.mandatory {
+ color: red;
+ padding: 3px;
+}
 
- // 登録画面
- .login-page {
-  color: white;
-  text-align: center;
-  font-weight: bold;
-  padding: 30px;
-  max-width: 450px;
-  background-color: rgba( 0, 0, 0, 0.4 );
-  margin: 0 auto;
-  border-radius: 20px;
- }
+// 登録画面
+.login-page {
+ color: white;
+ text-align: center;
+ font-weight: bold;
+ padding: 30px;
+ max-width: 450px;
+ background-color: rgba( 0, 0, 0, 0.4 );
+ margin: 0 auto;
+ border-radius: 20px;
+}
 
- // text_
- #user_name, #user_email, #user_password, #user_password_confirmation {
-  width: 80%;
- }
- .field_with_errors {
-  display: contents;
- }
+// text_
+#user_name, #user_email, #user_password, #user_password_confirmation {
+ width: 80%;
+}
+.field_with_errors {
+ display: contents;
+}
 
- #error_explanation {
-  background-color: rgba( 300, 0, 0, 0.1 );
-  max-width: 380px;
-  color: red;
- }
+#error_explanation {
+ background-color: rgba( 300, 0, 0, 0.1 );
+ max-width: 380px;
+ color: red;
+}
 
- #error_explanation ul li {
-  list-style: none;
- }
+#error_explanation ul li {
+ list-style: none;
+}
