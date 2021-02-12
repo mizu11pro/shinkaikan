@@ -70,6 +70,18 @@ RSpec.describe 'Userモデルのテスト', type: :model do
           expect(User.reflect_on_association(:entries).macro).to eq :has_many
         end
       end
+
+      context 'messagesモデルとの関係' do
+        it '1:Nの関係性か' do
+          expect(User.reflect_on_association(:messages).macro).to eq :has_many
+        end
+      end
+
+      context 'roomsモデルとの関係' do
+        it '1:Nの関係性か' do
+          expect(User.reflect_on_association(:rooms).macro).to eq :has_many
+        end
+      end
     end
 
   end

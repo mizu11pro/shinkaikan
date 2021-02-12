@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
-  has_many :room, through: :entry
+  has_many :rooms, through: :entry
 
   # follow機能
   has_many :of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
