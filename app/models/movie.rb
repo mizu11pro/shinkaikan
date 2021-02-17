@@ -12,6 +12,7 @@ class Movie < ApplicationRecord
 
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
   belongs_to :genre
 
   def favorited_by?(user)
