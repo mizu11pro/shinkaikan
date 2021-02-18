@@ -12,9 +12,18 @@ class User < ApplicationRecord
 
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  # DM機能
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :rooms, through: :entry
+  # /DM機能
+
+  # 通知機能
+  has_many :apponent_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  # 自分からの通知
+  has_many :myself_notifications, class_namee: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  # 相手からの通知
+  # /通知機能
 
   # follow機能
   has_many :of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
