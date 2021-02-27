@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Userモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
     let(:user) { User.create!(email: 'test@example.com', name: 'aaaa', password: 'aaaaaaa') }
+    # userにtest_userのemail.name.passwordを代入
     let(:other_user) { User.create!(email: 'other_user@example.com', name: 'bbbb', password: 'bbbbbbb') }
+    # other_userにもemail.name.passwordを代入
     subject { user.valid? }
 
     context 'nameのカラム' do
