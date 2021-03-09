@@ -25,25 +25,4 @@ class Movie < ApplicationRecord
     Movie.where(['title LIKE ?', "%#{search}%"])
   end
 
-  # 通知機能
-  def create_notification_favorite!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and movie = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
-    # すでに「いいね」されているかの検索
-  end
-
-  if temp.blank?
-    notification = current_user.active_notifications.new(
-      movie_id: id,
-      visited_id: user_id,
-      action: 'favorite'
-    )
-  # いいねされていない場合のみ通知テーブルを作成
-
-    if notification.visitor_id == notification.visited_id
-      notification.chacked = true
-    end
-    notification.save if  notification.valid?
-  end
-  # 自身の投稿にいいねした場合のみ通知済みとなり通知が送られない
-
 end
