@@ -34,7 +34,7 @@ class Users::MessagesController < ApplicationController
       @room=@message.room
       if @message.save
         @room_member=Entry.where(room_id: @room.id).where.not(user_id: current_user.id)
-        
+
         @user_room_id=@room_member.find_by(room_id: @room.id)
         notification = current_user.active_notifications.new(
           room_id: @message.id,
@@ -43,7 +43,7 @@ class Users::MessagesController < ApplicationController
           visited_id: @user_room_id.user_id,
           action: 'message'
           )
-        
+
         if notification.visitor_id == notification.visited_id
           notification.checked = true
           # 自身のメッセージには通知が届かないよう設定
