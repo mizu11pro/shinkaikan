@@ -14,8 +14,6 @@ class Users::FavoritesController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @favorite = current_user.favorites.new(movie_id: @movie.id)
     @favorite.save
-    # 通知機能
-    post.create_notification_favorite!(current_user)
   end
 
   def destroy

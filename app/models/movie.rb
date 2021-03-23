@@ -12,7 +12,7 @@ class Movie < ApplicationRecord
 
   has_many :movie_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :notifications, dependent: destroy
+  has_many :notifications, dependent: :destroy
 
   belongs_to :genre
 
