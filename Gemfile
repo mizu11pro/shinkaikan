@@ -72,6 +72,7 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 gem 'rails-i18n'
 gem 'rubocop-airbnb'
+gem 'kaminari'
 
 gem 'dotenv-rails'
 group :production do

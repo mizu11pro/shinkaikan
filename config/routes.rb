@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       end
     end
 
-    # resources :notifications, only: [:index]
+    resources :notifications, only: [:index]
     resources :messages, only: [:show, :create]
     resources :homes, except: [:new, :index, :show]
     resources :genres, except: [:show]

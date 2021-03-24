@@ -1,0 +1,18 @@
+<% notifications.each do |notification| %>
+  <article class="h6">
+    <% visitor = notification.visitor %>
+    <% visited = notification.visited %>
+    <div class="ml-3">
+        <p><%= notification.created_at.strftime("%m/%d/ %H:%M") %></p>
+        <% case notification.action
+           when 'follow' %>
+          <p><%= visitor.name %>さんが あなたをフォローしました♪</p>
+        <% end %>
+    </div>
+  </article>
+<% end %>
+<div class="row">
+  <div class="mx-auto mt-2 h2">
+    <%= paginate notifications %>
+  </div>
+</div>

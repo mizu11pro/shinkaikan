@@ -19,10 +19,10 @@ class User < ApplicationRecord
   # /DM機能
 
   # 通知機能
-  has_many :apponent_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
-  # 相手からの通知
-  has_many :myself_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :myself_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   # 自分からの通知
+  has_many :apponent_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  # 相手からの通知
   # /通知機能
 
   # follow機能
@@ -44,6 +44,19 @@ class User < ApplicationRecord
   end
   # /follow機能
 
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", current_user.id, id, 'follow'])
+
+    if temp.blank?
+      notification = current_user.myself_notifications.new(
+        visited_id: id,
+        action: 'follow'
+        )
+        notification.save if notification.valid?
+        # 通知レコードが作成されていない時のみレコード作成
+    end
+  end
+
   def self.search(search)
     return User.all unless search
     User.where(['name LIKE ?', "%#{search}%"]).where.not(name: 'guest', email: "admin@user")
@@ -54,4 +67,5 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
+
 end
