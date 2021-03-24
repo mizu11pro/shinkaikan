@@ -1,0 +1,14 @@
+<div class="back-image-2">
+  <div class="row">
+    <div class="col-md-7 col-xs-12 mx-auto">
+      <h5 class="border-bottom mt-4 mb-4 font-weight-bold">
+        <i class="fas fa-bell"></i> 通知 <i class="fas fa-bell"></i>
+      </h5>
+      <% if @notifications.exists? %>
+        <%= render 'users/notifications/notification', notifications: @notifications %>
+      <% else %>
+        <p>通知はございません</p>
+      <% end %>
+   </div>
+  </div>
+</div>
