@@ -31,28 +31,6 @@ class Users::MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(message_params)
     @message.save
-    # if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
-    #   @message = current_user.messages.new(message_params)
-    #   @room=@message.room
-    #   if @message.save
-    #     @room_member=Entry.where(room_id: @room.id).where.not(user_id: current_user.id)
-
-    #     @user_room_id=@room_member.find_by(room_id: @room.id)
-    #     notification = current_user.active_notifications.new(
-    #       room_id: @message.id,
-    #       message_id: @message.id,
-    #       visitor_id: current_user.id,
-    #       visited_id: @user_room_id.user_id,
-    #       action: 'message'
-    #       )
-
-    #     if notification.visitor_id == notification.visited_id
-    #       notification.checked = true
-    #       # 自身のメッセージには通知が届かないよう設定
-    #     end
-    #     notification.save if notification.valid?
-    #   end
-    # end
   end
 
   private
