@@ -31,6 +31,8 @@ class Users::MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(message_params)
     @message.save
+    # message機能に通知機能を加える際に非同期通信に影響が出る部分
+  
     # if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
     #   @message = current_user.messages.new(message_params)
     #   @room=@message.room
