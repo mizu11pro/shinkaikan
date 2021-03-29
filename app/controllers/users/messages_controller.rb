@@ -31,6 +31,7 @@ class Users::MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(message_params)
     @message.save
+    # messageの通知機能を実装しようとすると非同期に影響が出る部分
   end
 
   private
